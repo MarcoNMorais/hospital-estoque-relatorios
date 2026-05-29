@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatórios Online - Hospital José Mota Araújo</title>
+<style>
+:root{--azul:#0f3f75;--azul2:#1e88b9;--bg:#eef9ff;--borda:#cbe4f4}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#062b4f}
+header{background:linear-gradient(120deg,#123d73,#2197be);color:white;padding:22px;box-shadow:0 2px 10px #0002}
+header h1{margin:0;font-size:26px}
+header p{margin:6px 0 0;font-size:14px}
+.container{max-width:1280px;margin:20px auto;padding:0 14px}
+.card{background:white;border:1px solid var(--borda);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 4px 12px #00557a18}
+.login{max-width:460px;margin:60px auto}
+label{font-weight:700;font-size:14px;display:block;margin-top:12px}
+input,select{width:100%;padding:12px;border:1px solid #b9d4e8;border-radius:10px;font-size:14px}
+button{border:0;border-radius:10px;padding:12px 14px;font-weight:800;background:#2495c4;color:white;cursor:pointer}
+button.secondary{background:#dfe8f2;color:#062b4f}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.nav button.active{background:#0f3f75}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.mini{background:#f8fbff;border:1px solid var(--borda);border-radius:12px;padding:12px}
+.mini span{display:block;font-size:12px;color:#46627e}
+.mini strong{display:block;font-size:24px;color:#0f4f87;margin-top:4px}
+table{width:100%;border-collapse:collapse;background:white}
+th{background:#e4f4fb;color:#064074;text-align:left}
+th,td{padding:10px;border-bottom:1px solid #d8e8f2;font-size:14px}
+.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#dbeafe;color:#003f8c;font-weight:800;font-size:12px}
+.muted{color:#64748b;font-size:13px}
+.msg{margin-top:10px;color:#dc2626;font-weight:800}
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin-bottom:12px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.filters{grid-template-columns:1fr}.nav{display:grid}}
+</style>
+</head>
+<body>
+<header>
+  <h1>📊 Relatórios Online - Controle de Estoque</h1>
+  <p>Hospital Municipal José Mota Araújo | Consulta externa somente leitura</p>
+</header>
+
+<div id="loginBox" class="login card">
+  <h2>Entrar como Coordenador</h2>
+  <p class="muted">Use CPF e senha de Coordenador, Super Coordenador ou Administrador cadastrados no sistema local.</p>
+  <label>CPF</label>
+  <input id="cpf" placeholder="000.000.000-00" autocomplete="off">
+  <label>Senha</label>
+  <input id="senha" type="password" placeholder="Senha">
+  <button style="width:100%;margin-top:14px" onclick="login()">Entrar</button>
+  <div id="msg" class="msg"></div>
+</div>
+
+<div id="app" class="container" style="display:none">
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
+      <div>
+        <h2 style="margin:0">Painel de Consulta</h2>
+        <div class="muted">Última atualização: <strong id="geradoEm">-</strong></div>
+      </div>
+      <button class="secondary" onclick="logout()">Sair</button>
+    </div>
+  </div>
+
+  <div class="nav">
+    <button class="active" onclick="aba('dashboard',this)">Principal</button>
+    <button onclick="aba('estoque',this)">Estoque</button>
+    <button onclick="aba('estatisticas',this)">Estatísticas</button>
+    <button onclick="aba('movimentacoes',this)">Movimentações</button>
+  </div>
+
+  <section id="dashboard" class="sec">
+    <div class="grid">
+      <div class="mini"><span>Itens cadastrados</span><strong id="dItens">0</strong></div>
+      <div class="mini"><span>Total Almoxarifado</span><strong id="dAlmox">0</strong></div>
+      <div class="mini"><span>Total Farmácia</span><strong id="dFarm">0</strong></div>
+      <div class="mini"><span>Total Geral</span><strong id="dGeral">0</strong></div>
+      <div class="mini"><span>Abaixo do mínimo</span><strong id="dBaixo">0</strong></div>
+      <div class="mini"><span>Zerados</span><strong id="dZerados">0</strong></div>
+    </div>
+    <div class="card">
+      <h3>⚠️ Itens abaixo do mínimo</h3>
+      <table><thead><tr><th>Item</th><th>Total</th><th>Mínimo</th><th>Almox.</th><th>Farmácia</th></tr></thead><tbody id="baixoBody"></tbody></table>
+    </div>
+  </section>
+
+  <section id="estoque" class="sec" style="display:none">
+    <div class="card">
+      <h3>📦 Estoque por produto</h3>
+      <div class="filters">
+        <input id="buscaEstoque" placeholder="Buscar produto...">
+        <select id="tipoEstoque"><option value="">Todos tipos</option><option>Medicamento</option><option>Material</option><option>Insumo</option><option>Vacina</option><option>Outro</option></select>
+        <button onclick="renderEstoque()">Procurar</button>
+      </div>
+      <table><thead><tr><th>Item</th><th>Tipo</th><th>Unidade</th><th>Almox.</th><th>Farmácia</th><th>Total</th><th>Mínimo</th></tr></thead><tbody id="estoqueBody"></tbody></table>
+    </div>
+  </section>
+
+  <section id="estatisticas" class="sec" style="display:none">
+    <div class="card">
+      <h3>📊 Saídas por destino</h3>
+      <table><thead><tr><th>Destino</th><th>Quantidade</th><th>Movimentações</th></tr></thead><tbody id="destinoBody"></tbody></table>
+    </div>
+    <div class="card">
+      <h3>📊 Saídas por produto e destino</h3>
+      <table><thead><tr><th>Produto</th><th>Destino</th><th>Quantidade</th><th>Movimentações</th></tr></thead><tbody id="prodDestinoBody"></tbody></table>
+    </div>
+  </section>
+
+  <section id="movimentacoes" class="sec" style="display:none">
+    <div class="card">
+      <h3>📜 Últimas movimentações</h3>
+      <table><thead><tr><th>Data</th><th>Produto</th><th>Tipo</th><th>Origem</th><th>Destino</th><th>Qtd</th><th>Responsável</th></tr></thead><tbody id="movBody"></tbody></table>
+    </div>
+  </section>
+</div>
+
+<script>
+let DADOS=null;
+
+function onlyDigits(v){return String(v||"").replace(/\D/g,"")}
+async function sha256(texto){
+  const enc = new TextEncoder().encode(String(texto||""));
+  const buf = await crypto.subtle.digest("SHA-256", enc);
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,"0")).join("");
+}
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]))}
+function fmtData(d){if(!d)return "-"; const p=String(d).split("-"); return p.length===3?`${p[2]}/${p[1]}/${p[0]}`:d}
+
+async function carregarDados(){
+  const r = await fetch("dados_relatorios.json?ts="+Date.now());
+  DADOS = await r.json();
+  document.getElementById("geradoEm").textContent = DADOS.gerado_em || "-";
+}
+async function login(){
+  document.getElementById("msg").textContent = "";
+  try{
+    await carregarDados();
+    const cpf = onlyDigits(document.getElementById("cpf").value);
+    const senhaHash = await sha256(document.getElementById("senha").value);
+    const u = (DADOS.usuarios_consulta||[]).find(x=>x.cpf===cpf && x.senha_hash===senhaHash);
+    if(!u) throw new Error("CPF ou senha inválidos.");
+    localStorage.setItem("relatorio_user", JSON.stringify({nome:u.nome,cpf:u.cpf,perfil:u.perfil}));
+    abrirApp();
+  }catch(e){
+    document.getElementById("msg").textContent = e.message || "Erro ao entrar.";
+  }
+}
+function logout(){localStorage.removeItem("relatorio_user"); location.reload();}
+async function abrirApp(){
+  await carregarDados();
+  document.getElementById("loginBox").style.display="none";
+  document.getElementById("app").style.display="block";
+  renderTudo();
+}
+function aba(id,btn){
+  document.querySelectorAll(".sec").forEach(s=>s.style.display="none");
+  document.getElementById(id).style.display="block";
+  document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+}
+function renderTudo(){
+  const d=DADOS.dashboard||{};
+  dItens.textContent=d.itens_cadastrados||0;
+  dAlmox.textContent=d.total_almoxarifado||0;
+  dFarm.textContent=d.total_farmacia||0;
+  dGeral.textContent=d.total_geral||0;
+  dBaixo.textContent=d.abaixo_minimo||0;
+  dZerados.textContent=d.zerados||0;
+  baixoBody.innerHTML=(DADOS.baixo_minimo||[]).slice(0,20).map(i=>`<tr><td><strong>${esc(i.nome)}</strong></td><td>${i.total}</td><td>${i.minimo}</td><td>${i.saldos.almoxarifado}</td><td>${i.saldos.farmacia}</td></tr>`).join("") || `<tr><td colspan="5">Nenhum item abaixo do mínimo.</td></tr>`;
+  renderEstoque();
+  destinoBody.innerHTML=(DADOS.estatisticas?.por_destino||[]).map(x=>`<tr><td>${esc(x.destino)}</td><td><strong>${x.quantidade}</strong></td><td>${x.movimentacoes}</td></tr>`).join("") || `<tr><td colspan="3">Sem dados.</td></tr>`;
+  prodDestinoBody.innerHTML=(DADOS.estatisticas?.por_produto_destino||[]).slice(0,100).map(x=>`<tr><td>${esc(x.produto)}</td><td>${esc(x.destino)}</td><td><strong>${x.quantidade}</strong></td><td>${x.movimentacoes}</td></tr>`).join("") || `<tr><td colspan="4">Sem dados.</td></tr>`;
+  movBody.innerHTML=(DADOS.movimentacoes||[]).slice(0,100).map(m=>`<tr><td>${fmtData(m.data)}</td><td><strong>${esc(m.produto_nome)}</strong></td><td><span class="badge">${esc(m.tipo)}</span></td><td>${esc(m.origem)}</td><td>${esc(m.destino)}</td><td><strong>${m.quantidade}</strong></td><td>${esc(m.responsavel)}</td></tr>`).join("") || `<tr><td colspan="7">Sem movimentações.</td></tr>`;
+}
+function renderEstoque(){
+  const q=(buscaEstoque.value||"").toLowerCase();
+  const tipo=tipoEstoque.value||"";
+  const lista=(DADOS.itens||[]).filter(i=>(!q||String(i.nome||"").toLowerCase().includes(q))&&(!tipo||i.tipo===tipo));
+  estoqueBody.innerHTML=lista.map(i=>`<tr><td><strong>${esc(i.nome)}</strong></td><td>${esc(i.tipo)}</td><td>${esc(i.unidade)}</td><td>${i.saldos.almoxarifado}</td><td>${i.saldos.farmacia}</td><td><strong>${i.total}</strong></td><td>${i.minimo}</td></tr>`).join("") || `<tr><td colspan="7">Nenhum item encontrado.</td></tr>`;
+}
+(async()=>{
+  if(localStorage.getItem("relatorio_user")){
+    abrirApp();
+  }
+})();
+</script>
+</body>
+</html>
