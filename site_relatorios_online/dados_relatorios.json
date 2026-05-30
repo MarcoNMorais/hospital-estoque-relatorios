@@ -1,15 +1,15 @@
 {
   "ok": true,
-  "gerado_em": "2026-05-30 14:09:36",
+  "gerado_em": "2026-05-30 14:12:26",
   "hospital": "Hospital Municipal José Mota Araújo",
   "dashboard": {
     "itens_cadastrados": 200,
     "total_almoxarifado": 43893,
-    "total_farmacia": 13475,
+    "total_farmacia": 13385,
     "total_geral": 0,
     "abaixo_minimo": 200,
     "zerados": 200,
-    "saidas_registradas": 331
+    "saidas_registradas": 332
   },
   "itens": [
     {
@@ -44,13 +44,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-05-30 14:12:26",
       "nome": "AAS 100mg comprimido - Simulado Local 104",
       "tipo": "Outro",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 100,
-        "farmacia": 101,
+        "farmacia": 11,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -4615,6 +4615,19 @@
   ],
   "movimentacoes": [
     {
+      "id": 501,
+      "item_id": 104,
+      "produto_nome": "AAS 100mg comprimido - Simulado Local 104",
+      "tipo": "Farmácia para Sala de Medicações",
+      "origem": "Farmácia",
+      "destino": "Sala de Medicações",
+      "quantidade": 90,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-05-30",
+      "obs": "",
+      "criado_em": "2026-05-30 14:12:26"
+    },
+    {
       "id": 462,
       "item_id": 83,
       "produto_nome": "Prometazina - Simulado Local 083",
@@ -8500,22 +8513,22 @@
       "data": "2026-02-26",
       "obs": "Movimentação fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27"
-    },
-    {
-      "id": 365,
-      "item_id": 185,
-      "produto_nome": "Lactulose xarope - Simulado Local 185",
-      "tipo": "Farmácia para USF Centro",
-      "origem": "Farmácia",
-      "destino": "USF Centro",
-      "quantidade": 53,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-02-26",
-      "obs": "Movimentação fake local para teste de desempenho",
-      "criado_em": "2026-05-30 16:11:27"
     }
   ],
   "saidas_farmacia": [
+    {
+      "id": 501,
+      "item_id": 104,
+      "produto_nome": "AAS 100mg comprimido - Simulado Local 104",
+      "tipo": "Farmácia para Sala de Medicações",
+      "origem": "Farmácia",
+      "destino": "Sala de Medicações",
+      "quantidade": 90,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-05-30",
+      "obs": "",
+      "criado_em": "2026-05-30 14:12:26"
+    },
     {
       "id": 340,
       "item_id": 127,
@@ -12402,19 +12415,6 @@
       "data": "2025-12-23",
       "obs": "Movimentação fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27"
-    },
-    {
-      "id": 445,
-      "item_id": 126,
-      "produto_nome": "Gaze estéril pacote - Simulado Local 126",
-      "tipo": "Farmácia para USF Cidade Nova",
-      "origem": "Farmácia",
-      "destino": "USF Cidade Nova",
-      "quantidade": 14,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2025-12-22",
-      "obs": "Movimentação fake local para teste de desempenho",
-      "criado_em": "2026-05-30 16:11:27"
     }
   ],
   "baixo_minimo": [
@@ -12450,13 +12450,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-05-30 14:12:26",
       "nome": "AAS 100mg comprimido - Simulado Local 104",
       "tipo": "Outro",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 100,
-        "farmacia": 101,
+        "farmacia": 11,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -17052,13 +17052,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-05-30 14:12:26",
       "nome": "AAS 100mg comprimido - Simulado Local 104",
       "tipo": "Outro",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 100,
-        "farmacia": 101,
+        "farmacia": 11,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -21625,8 +21625,8 @@
     "por_destino": [
       {
         "destino": "Sala de Medicações",
-        "quantidade": 1430,
-        "movimentacoes": 40
+        "quantidade": 1520,
+        "movimentacoes": 41
       },
       {
         "destino": "CEMES",
@@ -21780,6 +21780,12 @@
         "destino": "Baixa/Perda/Vencimento",
         "quantidade": 91,
         "movimentacoes": 3
+      },
+      {
+        "produto": "AAS 100mg comprimido - Simulado Local 104",
+        "destino": "Sala de Medicações",
+        "quantidade": 90,
+        "movimentacoes": 1
       },
       {
         "produto": "Sonda Foley - Simulado Local 137",
