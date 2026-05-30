@@ -56,7 +56,7 @@ th,td{padding:10px;border-bottom:1px solid #d8e8f2;font-size:14px}
     <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
       <div>
         <h2 style="margin:0">Painel de Consulta</h2>
-        <div class="muted">Última atualização: <strong id="geradoEm">-</strong></div>
+        <div class="muted">Última atualização: <strong id="geradoEm">-</strong> | Atualiza automaticamente a cada 30 segundos</div>
       </div>
       <button class="secondary" onclick="logout()">Sair</button>
     </div>
@@ -193,6 +193,29 @@ function renderEstoque(){
   estoqueBody.innerHTML=lista.map(i=>`<tr><td><strong>${esc(i.nome)}</strong></td><td>${esc(i.tipo)}</td><td>${esc(i.unidade)}</td><td>${i.saldos.almoxarifado}</td><td>${i.saldos.farmacia}</td><td><strong>${i.total}</strong></td><td>${i.minimo}</td></tr>`).join("") || `<tr><td colspan="7">Nenhum item encontrado.</td></tr>`;
 }
 (async()=>{ if(localStorage.getItem("relatorio_user")) abrirApp(); })();
+
+/* ===== V58 AUTO ATUALIZAÇÃO ONLINE ===== */
+let V58_ULTIMA_ATUALIZACAO = "";
+async function v58AtualizarOnlineSemF5(){
+  try{
+    const antigo = DADOS ? JSON.stringify(DADOS.dashboard || {}) + String(DADOS.gerado_em || "") : "";
+    await carregarDados();
+    const novo = DADOS ? JSON.stringify(DADOS.dashboard || {}) + String(DADOS.gerado_em || "") : "";
+    if(document.getElementById("app") && document.getElementById("app").style.display !== "none"){
+      renderTudo();
+    }
+    if(antigo && novo && antigo !== novo){
+      console.log("Relatórios online atualizados automaticamente.");
+    }
+  }catch(e){
+    console.log("Falha ao atualizar automaticamente:", e);
+  }
+}
+setInterval(v58AtualizarOnlineSemF5, 30000);
+document.addEventListener("visibilitychange", ()=>{
+  if(!document.hidden) v58AtualizarOnlineSemF5();
+});
+
 </script>
 </body>
 </html>
