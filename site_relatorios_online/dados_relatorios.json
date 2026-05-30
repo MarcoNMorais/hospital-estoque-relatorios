@@ -1,15 +1,15 @@
 {
   "ok": true,
-  "gerado_em": "2026-05-30 13:18:16",
+  "gerado_em": "2026-05-30 13:25:21",
   "hospital": "Hospital Municipal José Mota Araújo",
   "dashboard": {
-    "itens_cadastrados": 201,
-    "total_almoxarifado": 43793,
-    "total_farmacia": 13625,
+    "itens_cadastrados": 200,
+    "total_almoxarifado": 43893,
+    "total_farmacia": 13475,
     "total_geral": 0,
-    "abaixo_minimo": 201,
-    "zerados": 201,
-    "saidas_registradas": 332
+    "abaixo_minimo": 200,
+    "zerados": 200,
+    "saidas_registradas": 331
   },
   "itens": [
     {
@@ -44,13 +44,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 13:18:16",
+      "atualizado_em": "2026-05-30 16:11:27",
       "nome": "AAS 100mg comprimido - Simulado Local 104",
       "tipo": "Outro",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 100,
-        "farmacia": 51,
+        "farmacia": 101,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -159,13 +159,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 13:18:01",
+      "atualizado_em": "2026-05-30 16:11:27",
       "nome": "Agulha 25x7 - Simulado Local 120",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
-        "almoxarifado": 149,
-        "farmacia": 324,
+        "almoxarifado": 349,
+        "farmacia": 124,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -1385,29 +1385,6 @@
       "saldos": {
         "almoxarifado": 278,
         "farmacia": 116,
-        "salaMedicacoes": 0,
-        "internamento": 0,
-        "salaCirurgica": 0,
-        "baixa": 0,
-        "outro": 0
-      }
-    },
-    {
-      "id": 201,
-      "produto_id": 203,
-      "minimo": 20,
-      "validade": "",
-      "lote": "",
-      "origem": "",
-      "obs": "",
-      "criado_em": "2026-05-30 13:17:42",
-      "atualizado_em": "2026-05-30 13:17:42",
-      "nome": "Dipirona 1g ampola",
-      "tipo": "Medicamento",
-      "unidade": "Ampola",
-      "saldos": {
-        "almoxarifado": 100,
-        "farmacia": 0,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -4637,45 +4614,6 @@
     }
   ],
   "movimentacoes": [
-    {
-      "id": 503,
-      "item_id": 104,
-      "produto_nome": "AAS 100mg comprimido - Simulado Local 104",
-      "tipo": "Farmácia para Sala de Medicações",
-      "origem": "Farmácia",
-      "destino": "Sala de Medicações",
-      "quantidade": 50,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 13:18:16"
-    },
-    {
-      "id": 502,
-      "item_id": 120,
-      "produto_nome": "Agulha 25x7 - Simulado Local 120",
-      "tipo": "Almoxarifado para Farmácia",
-      "origem": "Almoxarifado",
-      "destino": "Farmácia",
-      "quantidade": 200,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 13:18:01"
-    },
-    {
-      "id": 501,
-      "item_id": 201,
-      "produto_nome": "Dipirona 1g ampola",
-      "tipo": "Entrada no Almoxarifado",
-      "origem": "Entrada externa",
-      "destino": "Almoxarifado",
-      "quantidade": 100,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 13:17:42"
-    },
     {
       "id": 462,
       "item_id": 83,
@@ -8536,22 +8474,48 @@
       "data": "2026-02-27",
       "obs": "Movimentação fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27"
+    },
+    {
+      "id": 373,
+      "item_id": 35,
+      "produto_nome": "Esparadrapo - Simulado Local 035",
+      "tipo": "Farmácia para USF Rural",
+      "origem": "Farmácia",
+      "destino": "USF Rural",
+      "quantidade": 51,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-02-27",
+      "obs": "Movimentação fake local para teste de desempenho",
+      "criado_em": "2026-05-30 16:11:27"
+    },
+    {
+      "id": 487,
+      "item_id": 20,
+      "produto_nome": "Luva de procedimento P - Simulado Local 020",
+      "tipo": "Almoxarifado para Farmácia",
+      "origem": "Almoxarifado",
+      "destino": "Farmácia",
+      "quantidade": 70,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-02-26",
+      "obs": "Movimentação fake local para teste de desempenho",
+      "criado_em": "2026-05-30 16:11:27"
+    },
+    {
+      "id": 365,
+      "item_id": 185,
+      "produto_nome": "Lactulose xarope - Simulado Local 185",
+      "tipo": "Farmácia para USF Centro",
+      "origem": "Farmácia",
+      "destino": "USF Centro",
+      "quantidade": 53,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-02-26",
+      "obs": "Movimentação fake local para teste de desempenho",
+      "criado_em": "2026-05-30 16:11:27"
     }
   ],
   "saidas_farmacia": [
-    {
-      "id": 503,
-      "item_id": 104,
-      "produto_nome": "AAS 100mg comprimido - Simulado Local 104",
-      "tipo": "Farmácia para Sala de Medicações",
-      "origem": "Farmácia",
-      "destino": "Sala de Medicações",
-      "quantidade": 50,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 13:18:16"
-    },
     {
       "id": 340,
       "item_id": 127,
@@ -12438,6 +12402,19 @@
       "data": "2025-12-23",
       "obs": "Movimentação fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27"
+    },
+    {
+      "id": 445,
+      "item_id": 126,
+      "produto_nome": "Gaze estéril pacote - Simulado Local 126",
+      "tipo": "Farmácia para USF Cidade Nova",
+      "origem": "Farmácia",
+      "destino": "USF Cidade Nova",
+      "quantidade": 14,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2025-12-22",
+      "obs": "Movimentação fake local para teste de desempenho",
+      "criado_em": "2026-05-30 16:11:27"
     }
   ],
   "baixo_minimo": [
@@ -12473,13 +12450,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 13:18:16",
+      "atualizado_em": "2026-05-30 16:11:27",
       "nome": "AAS 100mg comprimido - Simulado Local 104",
       "tipo": "Outro",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 100,
-        "farmacia": 51,
+        "farmacia": 101,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -12588,13 +12565,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 13:18:01",
+      "atualizado_em": "2026-05-30 16:11:27",
       "nome": "Agulha 25x7 - Simulado Local 120",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
-        "almoxarifado": 149,
-        "farmacia": 324,
+        "almoxarifado": 349,
+        "farmacia": 124,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -13814,29 +13791,6 @@
       "saldos": {
         "almoxarifado": 278,
         "farmacia": 116,
-        "salaMedicacoes": 0,
-        "internamento": 0,
-        "salaCirurgica": 0,
-        "baixa": 0,
-        "outro": 0
-      }
-    },
-    {
-      "id": 201,
-      "produto_id": 203,
-      "minimo": 20,
-      "validade": "",
-      "lote": "",
-      "origem": "",
-      "obs": "",
-      "criado_em": "2026-05-30 13:17:42",
-      "atualizado_em": "2026-05-30 13:17:42",
-      "nome": "Dipirona 1g ampola",
-      "tipo": "Medicamento",
-      "unidade": "Ampola",
-      "saldos": {
-        "almoxarifado": 100,
-        "farmacia": 0,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -17098,13 +17052,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 13:18:16",
+      "atualizado_em": "2026-05-30 16:11:27",
       "nome": "AAS 100mg comprimido - Simulado Local 104",
       "tipo": "Outro",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 100,
-        "farmacia": 51,
+        "farmacia": 101,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -17213,13 +17167,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 13:18:01",
+      "atualizado_em": "2026-05-30 16:11:27",
       "nome": "Agulha 25x7 - Simulado Local 120",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
-        "almoxarifado": 149,
-        "farmacia": 324,
+        "almoxarifado": 349,
+        "farmacia": 124,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -18439,29 +18393,6 @@
       "saldos": {
         "almoxarifado": 278,
         "farmacia": 116,
-        "salaMedicacoes": 0,
-        "internamento": 0,
-        "salaCirurgica": 0,
-        "baixa": 0,
-        "outro": 0
-      }
-    },
-    {
-      "id": 201,
-      "produto_id": 203,
-      "minimo": 20,
-      "validade": "",
-      "lote": "",
-      "origem": "",
-      "obs": "",
-      "criado_em": "2026-05-30 13:17:42",
-      "atualizado_em": "2026-05-30 13:17:42",
-      "nome": "Dipirona 1g ampola",
-      "tipo": "Medicamento",
-      "unidade": "Ampola",
-      "saldos": {
-        "almoxarifado": 100,
-        "farmacia": 0,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -21694,8 +21625,8 @@
     "por_destino": [
       {
         "destino": "Sala de Medicações",
-        "quantidade": 1480,
-        "movimentacoes": 41
+        "quantidade": 1430,
+        "movimentacoes": 40
       },
       {
         "destino": "CEMES",
@@ -22442,12 +22373,6 @@
         "produto": "Esparadrapo - Simulado Local 035",
         "destino": "USF Rural",
         "quantidade": 51,
-        "movimentacoes": 1
-      },
-      {
-        "produto": "AAS 100mg comprimido - Simulado Local 104",
-        "destino": "Sala de Medicações",
-        "quantidade": 50,
         "movimentacoes": 1
       },
       {
