@@ -1,15 +1,15 @@
 {
   "ok": true,
-  "gerado_em": "2026-05-30 13:18:01",
+  "gerado_em": "2026-05-30 13:18:16",
   "hospital": "Hospital Municipal José Mota Araújo",
   "dashboard": {
     "itens_cadastrados": 201,
     "total_almoxarifado": 43793,
-    "total_farmacia": 13675,
+    "total_farmacia": 13625,
     "total_geral": 0,
     "abaixo_minimo": 201,
     "zerados": 201,
-    "saidas_registradas": 331
+    "saidas_registradas": 332
   },
   "itens": [
     {
@@ -44,13 +44,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-05-30 13:18:16",
       "nome": "AAS 100mg comprimido - Simulado Local 104",
       "tipo": "Outro",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 100,
-        "farmacia": 101,
+        "farmacia": 51,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -4638,6 +4638,19 @@
   ],
   "movimentacoes": [
     {
+      "id": 503,
+      "item_id": 104,
+      "produto_nome": "AAS 100mg comprimido - Simulado Local 104",
+      "tipo": "Farmácia para Sala de Medicações",
+      "origem": "Farmácia",
+      "destino": "Sala de Medicações",
+      "quantidade": 50,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-05-30",
+      "obs": "",
+      "criado_em": "2026-05-30 13:18:16"
+    },
+    {
       "id": 502,
       "item_id": 120,
       "produto_nome": "Agulha 25x7 - Simulado Local 120",
@@ -8523,22 +8536,22 @@
       "data": "2026-02-27",
       "obs": "Movimentação fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27"
-    },
-    {
-      "id": 373,
-      "item_id": 35,
-      "produto_nome": "Esparadrapo - Simulado Local 035",
-      "tipo": "Farmácia para USF Rural",
-      "origem": "Farmácia",
-      "destino": "USF Rural",
-      "quantidade": 51,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-02-27",
-      "obs": "Movimentação fake local para teste de desempenho",
-      "criado_em": "2026-05-30 16:11:27"
     }
   ],
   "saidas_farmacia": [
+    {
+      "id": 503,
+      "item_id": 104,
+      "produto_nome": "AAS 100mg comprimido - Simulado Local 104",
+      "tipo": "Farmácia para Sala de Medicações",
+      "origem": "Farmácia",
+      "destino": "Sala de Medicações",
+      "quantidade": 50,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-05-30",
+      "obs": "",
+      "criado_em": "2026-05-30 13:18:16"
+    },
     {
       "id": 340,
       "item_id": 127,
@@ -12425,19 +12438,6 @@
       "data": "2025-12-23",
       "obs": "Movimentação fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27"
-    },
-    {
-      "id": 445,
-      "item_id": 126,
-      "produto_nome": "Gaze estéril pacote - Simulado Local 126",
-      "tipo": "Farmácia para USF Cidade Nova",
-      "origem": "Farmácia",
-      "destino": "USF Cidade Nova",
-      "quantidade": 14,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2025-12-22",
-      "obs": "Movimentação fake local para teste de desempenho",
-      "criado_em": "2026-05-30 16:11:27"
     }
   ],
   "baixo_minimo": [
@@ -12473,13 +12473,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-05-30 13:18:16",
       "nome": "AAS 100mg comprimido - Simulado Local 104",
       "tipo": "Outro",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 100,
-        "farmacia": 101,
+        "farmacia": 51,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -17098,13 +17098,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-05-30 13:18:16",
       "nome": "AAS 100mg comprimido - Simulado Local 104",
       "tipo": "Outro",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 100,
-        "farmacia": 101,
+        "farmacia": 51,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -21694,8 +21694,8 @@
     "por_destino": [
       {
         "destino": "Sala de Medicações",
-        "quantidade": 1430,
-        "movimentacoes": 40
+        "quantidade": 1480,
+        "movimentacoes": 41
       },
       {
         "destino": "CEMES",
@@ -22442,6 +22442,12 @@
         "produto": "Esparadrapo - Simulado Local 035",
         "destino": "USF Rural",
         "quantidade": 51,
+        "movimentacoes": 1
+      },
+      {
+        "produto": "AAS 100mg comprimido - Simulado Local 104",
+        "destino": "Sala de Medicações",
+        "quantidade": 50,
         "movimentacoes": 1
       },
       {
