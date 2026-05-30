@@ -182,7 +182,7 @@
     @media(max-width:700px){.filter-bar{grid-template-columns:1fr}}
 
   
-    /* V71 - logo do portal online sem depender de imagem externa */
+    /* V72 - logo do portal online sem depender de imagem externa */
     .login-logo-wrap{
       display:flex;
       justify-content:center;
@@ -248,7 +248,7 @@
     }
 
   
-    /* V71 - logo visível no login online */
+    /* V72 - logo visível no login online */
     .login-brand-v69{
       width:100%;
       display:flex;
@@ -295,7 +295,7 @@
     }
 
   
-    /* V71 - logo, paginação e comportamento correto hospital/central */
+    /* V72 - logo, paginação e comportamento correto hospital/central */
     .login-card .login-brand-v70{
       width:100%;
       display:flex!important;
@@ -392,7 +392,7 @@
     }
 
   
-    /* V71 - logo definitivo no login online */
+    /* V72 - logo definitivo no login online */
     .login-logo-final-v71{
       display:flex!important;
       align-items:center;
@@ -1534,7 +1534,7 @@
 
 
 <script>
-/* ===== V71 ONLINE: HOSPITAL RECEBE DADOS LOCAIS + PAGINAÇÃO ===== */
+/* ===== V72 ONLINE: HOSPITAL RECEBE DADOS LOCAIS + PAGINAÇÃO ===== */
 (function(){
   window.__v70Pages = window.__v70Pages || {};
 
@@ -1806,7 +1806,7 @@
 
 
 <script>
-/* ===== V71 ONLINE: RESUMO REAL + TABELA COM FILTRO ===== */
+/* ===== V72 ONLINE: RESUMO REAL + TABELA COM FILTRO ===== */
 (function(){
   window.__v71Pages = window.__v71Pages || {};
   function H(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]))}
@@ -1901,6 +1901,199 @@
     window.aplicarPerfil=function(u){oldAplicar.apply(this,arguments);setTimeout(()=>{logo(); if(u&&(u.tipo==="admin"||(u.modulos||[]).includes("almox")))showSection("estoqueHospital",document.querySelector('[data-target="estoqueHospital"]'));},120)}
   }
   document.addEventListener("DOMContentLoaded",logo); setTimeout(logo,200); setTimeout(logo,1000);
+})();
+</script>
+
+
+<script>
+/* ===== V72 ONLINE: LEITURA ROBUSTA DOS ITENS DO JSON ===== */
+(function(){
+  function H(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]))}
+  function F(d){if(!d)return "-";const p=String(d).split("-");return p.length>=3?`${p[2]}/${p[1]}/${p[0]}`:d}
+  window.__v72Pages = window.__v72Pages || {};
+
+  function st(k){
+    if(!window.__v72Pages[k]) window.__v72Pages[k]={page:1,per:10,searched:false};
+    return window.__v72Pages[k];
+  }
+
+  function n(v){
+    if(v === null || v === undefined || v === "") return 0;
+    const x = Number(String(v).replace(",", "."));
+    return isNaN(x) ? 0 : x;
+  }
+
+  function rawItens(){
+    const d = window.DADOS || {};
+    if(Array.isArray(d.itens)) return d.itens;
+    if(Array.isArray(d.estoque)) return d.estoque;
+    if(Array.isArray(d.produtos)) return d.produtos;
+    if(Array.isArray(d.items)) return d.items;
+    if(Array.isArray(d.dados?.itens)) return d.dados.itens;
+    if(Array.isArray(d.relatorio?.itens)) return d.relatorio.itens;
+    return [];
+  }
+
+  function saldoDe(i, local){
+    const s = i.saldos || i.saldo || {};
+    if(local === "hospital"){
+      return n(s.farmacia ?? s.hospital ?? s.almox_hospital ?? s.almoxarifado_hospital ?? i.farmacia ?? i.hospital ?? i.almox_hospital ?? i.almoxarifado_hospital ?? i.saldo_farmacia ?? i.saldo_hospital ?? i.qtd_farmacia);
+    }
+    return n(s.almoxarifado ?? s.central ?? s.almox_central ?? s.almoxarifado_central ?? i.almoxarifado ?? i.central ?? i.almox_central ?? i.almoxarifado_central ?? i.saldo_almoxarifado ?? i.saldo_central ?? i.qtd_almoxarifado);
+  }
+
+  function totalDe(i){
+    if(i.total !== undefined) return n(i.total);
+    return saldoDe(i,"hospital") + saldoDe(i,"central");
+  }
+
+  function normalizaItem(i){
+    const nome = i.nome || i.produto_nome || i.item || i.produto || i.descricao || i.descrição || "Sem nome";
+    const tipo = i.tipo || i.categoria || i.grupo || "Sem tipo";
+    const unidade = i.unidade || i.und || i.un || "";
+    const minimo = n(i.minimo ?? i.estoque_minimo ?? i.min ?? i.mínimo);
+    return {
+      raw:i,
+      nome,
+      tipo,
+      unidade,
+      minimo,
+      total: totalDe(i),
+      hospital: saldoDe(i,"hospital"),
+      central: saldoDe(i,"central")
+    };
+  }
+
+  function itensNorm(){
+    return rawItens().map(normalizaItem);
+  }
+
+  function rawMovs(){
+    const d = window.DADOS || {};
+    if(Array.isArray(d.movimentacoes)) return d.movimentacoes;
+    if(Array.isArray(d.movimentações)) return d.movimentações;
+    if(Array.isArray(d.historico)) return d.historico;
+    if(Array.isArray(d.movimentos)) return d.movimentos;
+    if(Array.isArray(d.dados?.movimentacoes)) return d.dados.movimentacoes;
+    return [];
+  }
+
+  function movsNorm(){
+    return rawMovs().map(m=>({
+      data: m.data || m.criado_em || m.created_at || "",
+      produto_nome: m.produto_nome || m.nome || m.item || m.produto || "",
+      tipo: m.tipo || m.movimentacao || m.movimentação || "",
+      origem: m.origem || "",
+      destino: m.destino || "",
+      quantidade: n(m.quantidade ?? m.qtd ?? m.qtde ?? m.valor),
+      raw:m
+    }));
+  }
+
+  function tipos(){
+    return [...new Set(itensNorm().map(i=>i.tipo).filter(Boolean))].sort();
+  }
+
+  function mapaTipo(){
+    const m={};
+    itensNorm().forEach(i=>m[String(i.nome||"").toLowerCase()] = i.tipo || "");
+    return m;
+  }
+
+  function periodo(data, ini, fim){
+    if(!data) return true;
+    const d = String(data).slice(0,10);
+    if(ini && d < ini) return false;
+    if(fim && d > fim) return false;
+    return true;
+  }
+
+  function pager(total,key,call){
+    const s=st(key); const pages=Math.max(1,Math.ceil(total/s.per)); if(s.page>pages)s.page=pages;
+    return `<div class="pager-bar"><div>Mostrando ${total?((s.page-1)*s.per)+1:0} a ${Math.min(s.page*s.per,total)} de ${total}. Página ${s.page} de ${pages}.</div><div class="pager-actions"><label>Por página: <select onchange="window.__v72Pages['${key}'].per=parseInt(this.value);window.__v72Pages['${key}'].page=1;${call}">${[10,20,50,100].map(x=>`<option value="${x}" ${s.per===x?"selected":""}>${x}</option>`).join("")}</select></label><button ${s.page<=1?"disabled":""} onclick="window.__v72Pages['${key}'].page--;${call}">Anterior</button><button ${s.page>=pages?"disabled":""} onclick="window.__v72Pages['${key}'].page++;${call}">Próxima</button></div></div>`;
+  }
+
+  window.v72FiltrarEstoque=function(id,titulo,local){st(id).searched=true;st(id).page=1;renderEstoqueSecao(id,titulo,local)}
+  window.v72LimparEstoque=function(id,titulo,local){st(id).searched=false;st(id).page=1;["Busca","Tipo","Situacao"].forEach(x=>{const e=document.getElementById(id+x);if(e)e.value=""});renderEstoqueSecao(id,titulo,local)}
+  window.v72FiltrarEstatistica=function(id,titulo,local){st(id).searched=true;st(id).page=1;renderEstatisticaAlmox(id,titulo,local)}
+  window.v72LimparEstatistica=function(id,titulo,local){st(id).searched=false;st(id).page=1;["Busca","Tipo","Destino","Ini","Fim"].forEach(x=>{const e=document.getElementById(id+x);if(e)e.value=""});renderEstatisticaAlmox(id,titulo,local)}
+
+  window.renderEstoqueSecao=function(id,titulo,local){
+    const el=document.getElementById(id); if(!el)return;
+    const s=st(id), isCentral=id==="estoqueCentral";
+    const buscaId=id+"Busca", tipoId=id+"Tipo", sitId=id+"Situacao";
+    const busca=document.getElementById(buscaId)?.value||"", tipoFiltro=document.getElementById(tipoId)?.value||"", sitFiltro=document.getElementById(sitId)?.value||"";
+    // LOCAL vai para Hospital. Central fica em branco.
+    const fonte=isCentral ? [] : itensNorm();
+    const totalLocal=fonte.reduce((a,i)=>a+n(i.hospital),0);
+    const baixo=fonte.filter(i=>n(i.minimo)>0 && n(i.total)<=n(i.minimo));
+    let filtrados=[];
+    if(s.searched){
+      filtrados=fonte.filter(i=>{
+        const saldo=n(i.hospital), min=n(i.minimo), total=n(i.total);
+        const status=min>0&&total<=min?"baixo":saldo<=0?"zerado":"normal";
+        return (!busca||String(i.nome).toLowerCase().includes(busca.toLowerCase())) && (!tipoFiltro||i.tipo===tipoFiltro) && (!sitFiltro||status===sitFiltro);
+      });
+    }
+    const page=filtrados.slice((s.page-1)*s.per,(s.page-1)*s.per+s.per);
+    const rows=page.map(i=>{
+      const saldo=n(i.hospital), min=n(i.minimo), total=n(i.total);
+      const sit=min>0&&total<=min?'<span class="badge yellow">Abaixo mínimo</span>':saldo<=0?'<span class="badge purple">Zerado</span>':'<span class="badge green">Normal</span>';
+      return `<tr><td><strong>${H(i.nome)}</strong></td><td>${H(i.tipo)}</td><td>${H(i.unidade)}</td><td>${saldo}</td><td>${min}</td><td>${sit}</td></tr>`;
+    }).join("");
+    const msg=isCentral ? "Almoxerifado Central reservado. Os dados locais aparecem no Almoxerifado Hospital." : "Use os filtros e clique em Filtrar para carregar os produtos.";
+    el.innerHTML=`<div class="cards"><div class="card"><div class="label">Itens cadastrados</div><div class="value">${fonte.length}</div><div class="sub">${isCentral?"Aguardando integração":"Produtos sincronizados"}</div></div><div class="card"><div class="label">Saldo nesta unidade</div><div class="value">${totalLocal}</div><div class="sub">${H(titulo)}</div></div><div class="card"><div class="label">Abaixo do mínimo</div><div class="value warn">${baixo.length}</div><div class="sub">Itens para atenção</div></div><div class="card"><div class="label">Filtrados</div><div class="value">${filtrados.length}</div><div class="sub">Resultado atual</div></div></div><div class="card"><h3 class="section-title">Itens do ${H(titulo)}</h3><div class="filter-help">${msg}</div><div class="filter-bar"><div class="field"><label>Produto</label><input id="${buscaId}" placeholder="Buscar produto..." value="${H(busca)}"></div><div class="field"><label>Tipo</label><select id="${tipoId}"><option value="">Todos</option>${tipos().map(t=>`<option ${t===tipoFiltro?"selected":""}>${H(t)}</option>`).join("")}</select></div><div class="field"><label>Situação</label><select id="${sitId}"><option value="">Todas</option><option value="normal" ${sitFiltro==="normal"?"selected":""}>Normal</option><option value="baixo" ${sitFiltro==="baixo"?"selected":""}>Abaixo do mínimo</option><option value="zerado" ${sitFiltro==="zerado"?"selected":""}>Zerado</option></select></div><div></div><button class="btn small" onclick="v72FiltrarEstoque('${id}','${titulo}','${local}')">Filtrar</button><button class="btn small" onclick="v72LimparEstoque('${id}','${titulo}','${local}')">Limpar</button></div><div class="table-wrap"><table><thead><tr><th>Item</th><th>Categoria</th><th>Unidade</th><th>Saldo</th><th>Mínimo</th><th>Situação</th></tr></thead><tbody>${s.searched?(rows||'<tr><td colspan="6">Nenhum item encontrado no filtro.</td></tr>'):`<tr><td colspan="6">${msg}</td></tr>`}</tbody></table></div>${s.searched?pager(filtrados.length,id,`renderEstoqueSecao('${id}','${titulo}','${local}')`):""}</div>`;
+  }
+
+  window.renderEstatisticaAlmox=function(id,titulo,local){
+    const el=document.getElementById(id); if(!el)return;
+    const s=st(id), isCentral=id==="almoxCentral";
+    const buscaId=id+"Busca", tipoId=id+"Tipo", destId=id+"Destino", iniId=id+"Ini", fimId=id+"Fim";
+    const busca=document.getElementById(buscaId)?.value||"", tipoFiltro=document.getElementById(tipoId)?.value||"", destFiltro=document.getElementById(destId)?.value||"", ini=document.getElementById(iniId)?.value||"", fim=document.getElementById(fimId)?.value||"";
+    const mt=mapaTipo();
+    const base=isCentral ? [] : movsNorm();
+    let movs=[];
+    if(s.searched){
+      movs=base.filter(m=>{
+        const nome=String(m.produto_nome||""), tipo=mt[nome.toLowerCase()]||"";
+        return (!busca||nome.toLowerCase().includes(busca.toLowerCase())) && (!tipoFiltro||tipo===tipoFiltro) && (!destFiltro||String(m.destino||"")===destFiltro) && periodo(m.data,ini,fim);
+      });
+    }
+    const entradasResumo=base.filter(m=>String(m.tipo||"").toLowerCase().includes("entrada")||String(m.destino||"").toLowerCase().includes("almox")).length;
+    const saidasResumo=base.filter(m=>!String(m.tipo||"").toLowerCase().includes("entrada")).length;
+    const qtdResumo=base.reduce((a,m)=>a+n(m.quantidade),0);
+    const entradas=s.searched?movs.filter(m=>String(m.tipo||"").toLowerCase().includes("entrada")).length:entradasResumo;
+    const saidas=s.searched?movs.filter(m=>!String(m.tipo||"").toLowerCase().includes("entrada")).length:saidasResumo;
+    const qtd=s.searched?movs.reduce((a,m)=>a+n(m.quantidade),0):qtdResumo;
+    const porTipo={};
+    movs.forEach(m=>{const nome=String(m.produto_nome||""), tipo=mt[nome.toLowerCase()]||"Sem tipo";porTipo[tipo]=(porTipo[tipo]||0)+n(m.quantidade)});
+    const destinos=[...new Set(base.map(m=>m.destino).filter(Boolean))].sort();
+    const rowsTipo=Object.entries(porTipo).sort((a,b)=>b[1]-a[1]).map(([t,q])=>`<tr><td>${H(t)}</td><td><strong>${q}</strong></td></tr>`).join("");
+    const page=movs.slice((s.page-1)*s.per,(s.page-1)*s.per+s.per);
+    const rows=page.map(m=>`<tr><td>${F(m.data)}</td><td><strong>${H(m.produto_nome||"-")}</strong></td><td>${H(mt[String(m.produto_nome||"").toLowerCase()]||"-")}</td><td>${H(m.origem||"")}</td><td>${H(m.destino||"")}</td><td><strong>${n(m.quantidade)}</strong></td></tr>`).join("");
+    const msg=isCentral ? "Almoxerifado Central reservado. As estatísticas locais aparecem no Almoxerifado Hospital." : "Resumo acima já usa os dados enviados. Use filtros para carregar a tabela.";
+    el.innerHTML=`<div class="cards"><div class="card"><div class="label">${s.searched?"Entradas filtradas":"Entradas registradas"}</div><div class="value">${entradas}</div><div class="sub">Movimentações de entrada</div></div><div class="card"><div class="label">${s.searched?"Saídas filtradas":"Saídas registradas"}</div><div class="value">${saidas}</div><div class="sub">Movimentações de saída</div></div><div class="card"><div class="label">Quantidade movimentada</div><div class="value">${qtd}</div><div class="sub">${s.searched?"Soma do filtro atual":"Soma geral sincronizada"}</div></div><div class="card"><div class="label">${s.searched?"Registros filtrados":"Registros enviados"}</div><div class="value">${s.searched?movs.length:base.length}</div><div class="sub">${isCentral?"Aguardando integração":"Dados do estoque local"}</div></div></div><div class="card"><h3 class="section-title">Filtros da estatística — ${H(titulo)}</h3><div class="filter-help">${msg}</div><div class="filter-bar"><div class="field"><label>Produto</label><input id="${buscaId}" placeholder="Buscar produto..." value="${H(busca)}"></div><div class="field"><label>Tipo</label><select id="${tipoId}"><option value="">Todos</option>${tipos().map(t=>`<option ${t===tipoFiltro?"selected":""}>${H(t)}</option>`).join("")}</select></div><div class="field"><label>Destino</label><select id="${destId}"><option value="">Todos</option>${destinos.map(d=>`<option ${d===destFiltro?"selected":""}>${H(d)}</option>`).join("")}</select></div><div class="field"><label>Data inicial</label><input id="${iniId}" type="date" value="${H(ini)}"></div><div class="field"><label>Data final</label><input id="${fimId}" type="date" value="${H(fim)}"></div><button class="btn small" onclick="v72FiltrarEstatistica('${id}','${titulo}','${local}')">Filtrar</button><button class="btn small" onclick="v72LimparEstatistica('${id}','${titulo}','${local}')">Limpar</button></div></div><div class="grid-2"><div class="card"><h3 class="section-title">Quantidade por tipo</h3><div class="table-wrap"><table><thead><tr><th>Tipo</th><th>Quantidade</th></tr></thead><tbody>${s.searched?(rowsTipo||'<tr><td colspan="2">Sem dados no filtro.</td></tr>'):`<tr><td colspan="2">${msg}</td></tr>`}</tbody></table></div></div><div class="card"><h3 class="section-title">Movimentações filtradas</h3><div class="table-wrap"><table><thead><tr><th>Data</th><th>Produto</th><th>Tipo</th><th>Origem</th><th>Destino</th><th>Qtd</th></tr></thead><tbody>${s.searched?(rows||'<tr><td colspan="6">Sem movimentações no filtro.</td></tr>'):`<tr><td colspan="6">${msg}</td></tr>`}</tbody></table></div>${s.searched?pager(movs.length,id,`renderEstatisticaAlmox('${id}','${titulo}','${local}')`):""}</div></div>`;
+  }
+
+  window.renderAlmox=function(){
+    renderEstoqueSecao("estoqueHospital","Almoxerifado Hospital","hospital");
+    renderEstatisticaAlmox("almoxHospital","Almoxerifado Hospital","hospital");
+    renderEstoqueSecao("estoqueCentral","Almoxerifado Central","central");
+    renderEstatisticaAlmox("almoxCentral","Almoxerifado Central","central");
+  }
+
+  // Re-render after data load
+  const oldCarregar = window.carregarDados;
+  if(typeof oldCarregar==="function" && !window.__v72carregar){
+    window.__v72carregar=true;
+    window.carregarDados = async function(){
+      const r = await oldCarregar.apply(this, arguments);
+      setTimeout(()=>{try{renderAlmox()}catch(e){}},80);
+      return r;
+    }
+  }
+
+  setTimeout(()=>{try{renderAlmox()}catch(e){}},500);
 })();
 </script>
 
