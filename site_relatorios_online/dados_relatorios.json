@@ -1,15 +1,15 @@
 {
   "ok": true,
-  "gerado_em": "2026-05-30 14:16:31",
+  "gerado_em": "2026-05-30 14:16:47",
   "hospital": "Hospital Municipal José Mota Araújo",
   "dashboard": {
     "itens_cadastrados": 200,
     "total_almoxarifado": 44793,
-    "total_farmacia": 13425,
+    "total_farmacia": 13375,
     "total_geral": 0,
     "abaixo_minimo": 200,
     "zerados": 200,
-    "saidas_registradas": 332
+    "saidas_registradas": 333
   },
   "itens": [
     {
@@ -320,13 +320,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-05-30 14:16:47",
       "nome": "Amitriptilina - Simulado Local 074",
       "tipo": "Outro",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 54,
-        "farmacia": 103,
+        "farmacia": 53,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -4615,6 +4615,19 @@
   ],
   "movimentacoes": [
     {
+      "id": 503,
+      "item_id": 74,
+      "produto_nome": "Amitriptilina - Simulado Local 074",
+      "tipo": "Farmácia para Sala de Medicações",
+      "origem": "Farmácia",
+      "destino": "Sala de Medicações",
+      "quantidade": 50,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-05-30",
+      "obs": "",
+      "criado_em": "2026-05-30 14:16:47"
+    },
+    {
       "id": 502,
       "item_id": 104,
       "produto_nome": "AAS 100mg comprimido - Simulado Local 104",
@@ -8500,22 +8513,22 @@
       "data": "2026-02-27",
       "obs": "Movimentação fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27"
-    },
-    {
-      "id": 373,
-      "item_id": 35,
-      "produto_nome": "Esparadrapo - Simulado Local 035",
-      "tipo": "Farmácia para USF Rural",
-      "origem": "Farmácia",
-      "destino": "USF Rural",
-      "quantidade": 51,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-02-27",
-      "obs": "Movimentação fake local para teste de desempenho",
-      "criado_em": "2026-05-30 16:11:27"
     }
   ],
   "saidas_farmacia": [
+    {
+      "id": 503,
+      "item_id": 74,
+      "produto_nome": "Amitriptilina - Simulado Local 074",
+      "tipo": "Farmácia para Sala de Medicações",
+      "origem": "Farmácia",
+      "destino": "Sala de Medicações",
+      "quantidade": 50,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-05-30",
+      "obs": "",
+      "criado_em": "2026-05-30 14:16:47"
+    },
     {
       "id": 502,
       "item_id": 104,
@@ -12402,19 +12415,6 @@
       "data": "2025-12-23",
       "obs": "Movimentação fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27"
-    },
-    {
-      "id": 207,
-      "item_id": 31,
-      "produto_nome": "Cateter intravenoso 20G - Simulado Local 031",
-      "tipo": "Farmácia para Vacinação",
-      "origem": "Farmácia",
-      "destino": "Vacinação",
-      "quantidade": 23,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2025-12-23",
-      "obs": "Movimentação fake local para teste de desempenho",
-      "criado_em": "2026-05-30 16:11:27"
     }
   ],
   "baixo_minimo": [
@@ -12726,13 +12726,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-05-30 14:16:47",
       "nome": "Amitriptilina - Simulado Local 074",
       "tipo": "Outro",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 54,
-        "farmacia": 103,
+        "farmacia": 53,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -17328,13 +17328,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-05-30 14:16:47",
       "nome": "Amitriptilina - Simulado Local 074",
       "tipo": "Outro",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 54,
-        "farmacia": 103,
+        "farmacia": 53,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -21625,8 +21625,8 @@
     "por_destino": [
       {
         "destino": "Sala de Medicações",
-        "quantidade": 1480,
-        "movimentacoes": 41
+        "quantidade": 1530,
+        "movimentacoes": 42
       },
       {
         "destino": "CEMES",
@@ -22373,6 +22373,12 @@
         "produto": "Esparadrapo - Simulado Local 035",
         "destino": "USF Rural",
         "quantidade": 51,
+        "movimentacoes": 1
+      },
+      {
+        "produto": "Amitriptilina - Simulado Local 074",
+        "destino": "Sala de Medicações",
+        "quantidade": 50,
         "movimentacoes": 1
       },
       {
