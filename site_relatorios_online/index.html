@@ -181,6 +181,72 @@
     @media(max-width:1100px){.filter-bar{grid-template-columns:1fr 1fr}}
     @media(max-width:700px){.filter-bar{grid-template-columns:1fr}}
 
+  
+    /* V68 - logo do portal online sem depender de imagem externa */
+    .login-logo-wrap{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin:6px auto 20px;
+    }
+    .portal-logo-v68{
+      width:min(330px,92%);
+      min-height:112px;
+      border-radius:24px;
+      background:linear-gradient(135deg,#ffffff 0%,#f5f9ff 62%,#fff7e5 100%);
+      border:1px solid #dce5f1;
+      box-shadow:0 16px 30px rgba(10,35,72,.12);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      padding:18px 20px;
+      position:relative;
+      overflow:hidden;
+    }
+    .portal-logo-v68:before{
+      content:'';
+      position:absolute;
+      left:0;
+      top:0;
+      height:7px;
+      width:100%;
+      background:linear-gradient(90deg,#d71d24 0 27%,#005cb9 27% 73%,#d3a246 73% 100%);
+    }
+    .portal-logo-mark-v68{
+      width:68px;
+      height:68px;
+      border-radius:22px;
+      background:linear-gradient(135deg,#0a2348,#005cb9 70%,#d3a246);
+      color:white;
+      display:grid;
+      place-items:center;
+      font-weight:1000;
+      font-size:24px;
+      letter-spacing:-1px;
+      box-shadow:0 12px 25px rgba(0,59,122,.22);
+      flex:0 0 auto;
+    }
+    .portal-logo-text-v68 strong{
+      display:block;
+      font-size:23px;
+      line-height:1.05;
+      color:#0a2348;
+      font-weight:1000;
+    }
+    .portal-logo-text-v68 span{
+      display:block;
+      margin-top:5px;
+      font-size:13px;
+      color:#005cb9;
+      font-weight:900;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+    .login-logo{
+      display:none !important;
+    }
+
   </style>
 </head>
 <body>
