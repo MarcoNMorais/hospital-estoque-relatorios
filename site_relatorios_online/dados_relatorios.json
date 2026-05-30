@@ -1,15 +1,15 @@
 {
   "ok": true,
-  "gerado_em": "2026-05-30 09:12:24",
+  "gerado_em": "2026-05-30 09:24:03",
   "hospital": "Hospital Municipal José Mota Araújo",
   "dashboard": {
-    "itens_cadastrados": 11,
-    "total_almoxarifado": 1359,
-    "total_farmacia": 176,
+    "itens_cadastrados": 10,
+    "total_almoxarifado": 1389,
+    "total_farmacia": 306,
     "total_geral": 0,
-    "abaixo_minimo": 11,
-    "zerados": 11,
-    "saidas_registradas": 100
+    "abaixo_minimo": 10,
+    "zerados": 10,
+    "saidas_registradas": 98
   },
   "itens": [
     {
@@ -21,13 +21,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 09:12:24",
+      "atualizado_em": "2026-05-29 20:18:33",
       "nome": "Amoxicilina 500mg cápsula",
       "tipo": "Medicamento",
       "unidade": "Cápsula",
       "saldos": {
-        "almoxarifado": 8,
-        "farmacia": 0,
+        "almoxarifado": 148,
+        "farmacia": 110,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -74,29 +74,6 @@
       "saldos": {
         "almoxarifado": 257,
         "farmacia": 26,
-        "salaMedicacoes": 0,
-        "internamento": 0,
-        "salaCirurgica": 0,
-        "baixa": 0,
-        "outro": 0
-      }
-    },
-    {
-      "id": 11,
-      "produto_id": 63,
-      "minimo": 2,
-      "validade": "",
-      "lote": "",
-      "origem": "",
-      "obs": "",
-      "criado_em": "2026-05-30 09:07:42",
-      "atualizado_em": "2026-05-30 09:07:42",
-      "nome": "Esparadrapo",
-      "tipo": "Material",
-      "unidade": "Unidade",
-      "saldos": {
-        "almoxarifado": 10,
-        "farmacia": 0,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -180,15 +157,15 @@
       "validade": "",
       "lote": "",
       "origem": "",
-      "obs": "",
+      "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 09:09:24",
+      "atualizado_em": "2026-05-29 20:18:33",
       "nome": "Paracetamol 500mg comprimido",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
-        "almoxarifado": 269,
-        "farmacia": 1,
+        "almoxarifado": 169,
+        "farmacia": 21,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -267,84 +244,6 @@
     }
   ],
   "movimentacoes": [
-    {
-      "id": 124,
-      "item_id": 3,
-      "produto_nome": "Amoxicilina 500mg cápsula",
-      "tipo": "Farmácia para Sala de Medicações",
-      "origem": "Farmácia",
-      "destino": "Sala de Medicações",
-      "quantidade": 250,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 09:12:24"
-    },
-    {
-      "id": 123,
-      "item_id": 3,
-      "produto_nome": "Amoxicilina 500mg cápsula",
-      "tipo": "Almoxarifado para Farmácia",
-      "origem": "Almoxarifado",
-      "destino": "Farmácia",
-      "quantidade": 90,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 09:11:31"
-    },
-    {
-      "id": 122,
-      "item_id": 3,
-      "produto_nome": "Amoxicilina 500mg cápsula",
-      "tipo": "Almoxarifado para Farmácia",
-      "origem": "Almoxarifado",
-      "destino": "Farmácia",
-      "quantidade": 50,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 09:10:08"
-    },
-    {
-      "id": 121,
-      "item_id": 1,
-      "produto_nome": "Paracetamol 500mg comprimido",
-      "tipo": "Farmácia para Sala de Medicações",
-      "origem": "Farmácia",
-      "destino": "Sala de Medicações",
-      "quantidade": 20,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 09:09:24"
-    },
-    {
-      "id": 120,
-      "item_id": 11,
-      "produto_nome": "Esparadrapo",
-      "tipo": "Entrada no Almoxarifado",
-      "origem": "Entrada externa",
-      "destino": "Almoxarifado",
-      "quantidade": 10,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 09:07:42"
-    },
-    {
-      "id": 119,
-      "item_id": 1,
-      "produto_nome": "Paracetamol 500mg comprimido",
-      "tipo": "Entrada no Almoxarifado",
-      "origem": "Entrada externa",
-      "destino": "Almoxarifado",
-      "quantidade": 100,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 09:06:24"
-    },
     {
       "id": 8,
       "item_id": 1,
@@ -1882,32 +1781,6 @@
   ],
   "saidas_farmacia": [
     {
-      "id": 124,
-      "item_id": 3,
-      "produto_nome": "Amoxicilina 500mg cápsula",
-      "tipo": "Farmácia para Sala de Medicações",
-      "origem": "Farmácia",
-      "destino": "Sala de Medicações",
-      "quantidade": 250,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 09:12:24"
-    },
-    {
-      "id": 121,
-      "item_id": 1,
-      "produto_nome": "Paracetamol 500mg comprimido",
-      "tipo": "Farmácia para Sala de Medicações",
-      "origem": "Farmácia",
-      "destino": "Sala de Medicações",
-      "quantidade": 20,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 09:09:24"
-    },
-    {
       "id": 8,
       "item_id": 1,
       "produto_nome": "Paracetamol 500mg comprimido",
@@ -3192,13 +3065,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 09:12:24",
+      "atualizado_em": "2026-05-29 20:18:33",
       "nome": "Amoxicilina 500mg cápsula",
       "tipo": "Medicamento",
       "unidade": "Cápsula",
       "saldos": {
-        "almoxarifado": 8,
-        "farmacia": 0,
+        "almoxarifado": 148,
+        "farmacia": 110,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3245,29 +3118,6 @@
       "saldos": {
         "almoxarifado": 257,
         "farmacia": 26,
-        "salaMedicacoes": 0,
-        "internamento": 0,
-        "salaCirurgica": 0,
-        "baixa": 0,
-        "outro": 0
-      }
-    },
-    {
-      "id": 11,
-      "produto_id": 63,
-      "minimo": 2,
-      "validade": "",
-      "lote": "",
-      "origem": "",
-      "obs": "",
-      "criado_em": "2026-05-30 09:07:42",
-      "atualizado_em": "2026-05-30 09:07:42",
-      "nome": "Esparadrapo",
-      "tipo": "Material",
-      "unidade": "Unidade",
-      "saldos": {
-        "almoxarifado": 10,
-        "farmacia": 0,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3351,15 +3201,15 @@
       "validade": "",
       "lote": "",
       "origem": "",
-      "obs": "",
+      "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 09:09:24",
+      "atualizado_em": "2026-05-29 20:18:33",
       "nome": "Paracetamol 500mg comprimido",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
-        "almoxarifado": 269,
-        "farmacia": 1,
+        "almoxarifado": 169,
+        "farmacia": 21,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3447,13 +3297,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 09:12:24",
+      "atualizado_em": "2026-05-29 20:18:33",
       "nome": "Amoxicilina 500mg cápsula",
       "tipo": "Medicamento",
       "unidade": "Cápsula",
       "saldos": {
-        "almoxarifado": 8,
-        "farmacia": 0,
+        "almoxarifado": 148,
+        "farmacia": 110,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3500,29 +3350,6 @@
       "saldos": {
         "almoxarifado": 257,
         "farmacia": 26,
-        "salaMedicacoes": 0,
-        "internamento": 0,
-        "salaCirurgica": 0,
-        "baixa": 0,
-        "outro": 0
-      }
-    },
-    {
-      "id": 11,
-      "produto_id": 63,
-      "minimo": 2,
-      "validade": "",
-      "lote": "",
-      "origem": "",
-      "obs": "",
-      "criado_em": "2026-05-30 09:07:42",
-      "atualizado_em": "2026-05-30 09:07:42",
-      "nome": "Esparadrapo",
-      "tipo": "Material",
-      "unidade": "Unidade",
-      "saldos": {
-        "almoxarifado": 10,
-        "farmacia": 0,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3606,15 +3433,15 @@
       "validade": "",
       "lote": "",
       "origem": "",
-      "obs": "",
+      "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 09:09:24",
+      "atualizado_em": "2026-05-29 20:18:33",
       "nome": "Paracetamol 500mg comprimido",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
-        "almoxarifado": 269,
-        "farmacia": 1,
+        "almoxarifado": 169,
+        "farmacia": 21,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3695,11 +3522,6 @@
   "estatisticas": {
     "por_destino": [
       {
-        "destino": "Sala de Medicações",
-        "quantidade": 641,
-        "movimentacoes": 20
-      },
-      {
         "destino": "Sala Cirúrgica",
         "quantidade": 471,
         "movimentacoes": 16
@@ -3713,6 +3535,11 @@
         "destino": "Internamento",
         "quantidade": 377,
         "movimentacoes": 14
+      },
+      {
+        "destino": "Sala de Medicações",
+        "quantidade": 371,
+        "movimentacoes": 18
       },
       {
         "destino": "USF Centro",
@@ -3731,12 +3558,6 @@
       }
     ],
     "por_produto_destino": [
-      {
-        "produto": "Amoxicilina 500mg cápsula",
-        "destino": "Sala de Medicações",
-        "quantidade": 282,
-        "movimentacoes": 2
-      },
       {
         "produto": "Soro Fisiológico 0,9% 500ml",
         "destino": "Sala de Medicações",
@@ -3772,12 +3593,6 @@
         "destino": "Sala Cirúrgica",
         "quantidade": 86,
         "movimentacoes": 2
-      },
-      {
-        "produto": "Paracetamol 500mg comprimido",
-        "destino": "Sala de Medicações",
-        "quantidade": 85,
-        "movimentacoes": 3
       },
       {
         "produto": "Insulina NPH",
@@ -3820,6 +3635,12 @@
         "destino": "USF Centro",
         "quantidade": 66,
         "movimentacoes": 3
+      },
+      {
+        "produto": "Paracetamol 500mg comprimido",
+        "destino": "Sala de Medicações",
+        "quantidade": 65,
+        "movimentacoes": 2
       },
       {
         "produto": "Amoxicilina 500mg cápsula",
@@ -3922,6 +3743,12 @@
         "destino": "USF Cidade Nova",
         "quantidade": 32,
         "movimentacoes": 2
+      },
+      {
+        "produto": "Amoxicilina 500mg cápsula",
+        "destino": "Sala de Medicações",
+        "quantidade": 32,
+        "movimentacoes": 1
       },
       {
         "produto": "Ibuprofeno 600mg comprimido",
