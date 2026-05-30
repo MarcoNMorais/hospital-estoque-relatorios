@@ -1,15 +1,15 @@
 {
   "ok": true,
-  "gerado_em": "2026-05-30 12:17:55",
+  "gerado_em": "2026-05-30 12:22:01",
   "hospital": "Hospital Municipal José Mota Araújo",
   "dashboard": {
     "itens_cadastrados": 10,
-    "total_almoxarifado": 1341,
-    "total_farmacia": 334,
+    "total_almoxarifado": 1389,
+    "total_farmacia": 306,
     "total_geral": 0,
     "abaixo_minimo": 10,
     "zerados": 10,
-    "saidas_registradas": 100
+    "saidas_registradas": 98
   },
   "itens": [
     {
@@ -21,13 +21,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 12:15:23",
+      "atualizado_em": "2026-05-29 20:18:33",
       "nome": "Amoxicilina 500mg cápsula",
       "tipo": "Medicamento",
       "unidade": "Cápsula",
       "saldos": {
-        "almoxarifado": 100,
-        "farmacia": 158,
+        "almoxarifado": 148,
+        "farmacia": 110,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -159,13 +159,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 12:17:55",
+      "atualizado_em": "2026-05-29 20:18:33",
       "nome": "Paracetamol 500mg comprimido",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
         "almoxarifado": 169,
-        "farmacia": 11,
+        "farmacia": 21,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -182,13 +182,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 12:15:44",
+      "atualizado_em": "2026-05-29 20:18:33",
       "nome": "Seringa 5ml",
       "tipo": "Insumo",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 105,
-        "farmacia": 17,
+        "farmacia": 27,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -244,45 +244,6 @@
     }
   ],
   "movimentacoes": [
-    {
-      "id": 121,
-      "item_id": 1,
-      "produto_nome": "Paracetamol 500mg comprimido",
-      "tipo": "Baixa Farmácia",
-      "origem": "Farmácia",
-      "destino": "Baixa/Perda/Vencimento",
-      "quantidade": 10,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 12:17:55"
-    },
-    {
-      "id": 120,
-      "item_id": 7,
-      "produto_nome": "Seringa 5ml",
-      "tipo": "Farmácia para Sala Cirúrgica",
-      "origem": "Farmácia",
-      "destino": "Sala Cirúrgica",
-      "quantidade": 10,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 12:15:44"
-    },
-    {
-      "id": 119,
-      "item_id": 3,
-      "produto_nome": "Amoxicilina 500mg cápsula",
-      "tipo": "Almoxarifado para Farmácia",
-      "origem": "Almoxarifado",
-      "destino": "Farmácia",
-      "quantidade": 48,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 12:15:23"
-    },
     {
       "id": 8,
       "item_id": 1,
@@ -1820,32 +1781,6 @@
   ],
   "saidas_farmacia": [
     {
-      "id": 121,
-      "item_id": 1,
-      "produto_nome": "Paracetamol 500mg comprimido",
-      "tipo": "Baixa Farmácia",
-      "origem": "Farmácia",
-      "destino": "Baixa/Perda/Vencimento",
-      "quantidade": 10,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 12:17:55"
-    },
-    {
-      "id": 120,
-      "item_id": 7,
-      "produto_nome": "Seringa 5ml",
-      "tipo": "Farmácia para Sala Cirúrgica",
-      "origem": "Farmácia",
-      "destino": "Sala Cirúrgica",
-      "quantidade": 10,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 12:15:44"
-    },
-    {
       "id": 8,
       "item_id": 1,
       "produto_nome": "Paracetamol 500mg comprimido",
@@ -3130,13 +3065,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 12:15:23",
+      "atualizado_em": "2026-05-29 20:18:33",
       "nome": "Amoxicilina 500mg cápsula",
       "tipo": "Medicamento",
       "unidade": "Cápsula",
       "saldos": {
-        "almoxarifado": 100,
-        "farmacia": 158,
+        "almoxarifado": 148,
+        "farmacia": 110,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3268,13 +3203,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 12:17:55",
+      "atualizado_em": "2026-05-29 20:18:33",
       "nome": "Paracetamol 500mg comprimido",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
         "almoxarifado": 169,
-        "farmacia": 11,
+        "farmacia": 21,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3291,13 +3226,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 12:15:44",
+      "atualizado_em": "2026-05-29 20:18:33",
       "nome": "Seringa 5ml",
       "tipo": "Insumo",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 105,
-        "farmacia": 17,
+        "farmacia": 27,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3362,13 +3297,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 12:15:23",
+      "atualizado_em": "2026-05-29 20:18:33",
       "nome": "Amoxicilina 500mg cápsula",
       "tipo": "Medicamento",
       "unidade": "Cápsula",
       "saldos": {
-        "almoxarifado": 100,
-        "farmacia": 158,
+        "almoxarifado": 148,
+        "farmacia": 110,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3500,13 +3435,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 12:17:55",
+      "atualizado_em": "2026-05-29 20:18:33",
       "nome": "Paracetamol 500mg comprimido",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
         "almoxarifado": 169,
-        "farmacia": 11,
+        "farmacia": 21,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3523,13 +3458,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 12:15:44",
+      "atualizado_em": "2026-05-29 20:18:33",
       "nome": "Seringa 5ml",
       "tipo": "Insumo",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 105,
-        "farmacia": 17,
+        "farmacia": 27,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3588,8 +3523,8 @@
     "por_destino": [
       {
         "destino": "Sala Cirúrgica",
-        "quantidade": 481,
-        "movimentacoes": 17
+        "quantidade": 471,
+        "movimentacoes": 16
       },
       {
         "destino": "Posto Rural",
@@ -3613,8 +3548,8 @@
       },
       {
         "destino": "Baixa/Perda/Vencimento",
-        "quantidade": 283,
-        "movimentacoes": 12
+        "quantidade": 273,
+        "movimentacoes": 11
       },
       {
         "destino": "USF Cidade Nova",
@@ -3840,12 +3775,6 @@
         "movimentacoes": 1
       },
       {
-        "produto": "Seringa 5ml",
-        "destino": "Sala Cirúrgica",
-        "quantidade": 23,
-        "movimentacoes": 2
-      },
-      {
         "produto": "Equipo Macrogotas",
         "destino": "USF Centro",
         "quantidade": 22,
@@ -3913,14 +3842,14 @@
       },
       {
         "produto": "Seringa 5ml",
-        "destino": "Baixa/Perda/Vencimento",
+        "destino": "Sala Cirúrgica",
         "quantidade": 13,
         "movimentacoes": 1
       },
       {
-        "produto": "Paracetamol 500mg comprimido",
+        "produto": "Seringa 5ml",
         "destino": "Baixa/Perda/Vencimento",
-        "quantidade": 10,
+        "quantidade": 13,
         "movimentacoes": 1
       },
       {
