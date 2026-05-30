@@ -1,15 +1,15 @@
 {
   "ok": true,
-  "gerado_em": "2026-05-30 14:49:24",
+  "gerado_em": "2026-05-30 14:50:51",
   "hospital": "Hospital Municipal José Mota Araújo",
   "dashboard": {
     "itens_cadastrados": 10,
     "total_almoxarifado": 1189,
-    "total_farmacia": 506,
+    "total_farmacia": 456,
     "total_geral": 0,
     "abaixo_minimo": 10,
     "zerados": 10,
-    "saidas_registradas": 98
+    "saidas_registradas": 99
   },
   "itens": [
     {
@@ -21,13 +21,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 12:24:38",
+      "atualizado_em": "2026-05-30 14:50:51",
       "nome": "Amoxicilina 500mg cápsula",
       "tipo": "Medicamento",
       "unidade": "Cápsula",
       "saldos": {
         "almoxarifado": 48,
-        "farmacia": 210,
+        "farmacia": 160,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -244,6 +244,19 @@
     }
   ],
   "movimentacoes": [
+    {
+      "id": 121,
+      "item_id": 3,
+      "produto_nome": "Amoxicilina 500mg cápsula",
+      "tipo": "Farmácia para Sala de Medicações",
+      "origem": "Farmácia",
+      "destino": "Sala de Medicações",
+      "quantidade": 50,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-05-30",
+      "obs": "",
+      "criado_em": "2026-05-30 14:50:51"
+    },
     {
       "id": 120,
       "item_id": 2,
@@ -1807,6 +1820,19 @@
   ],
   "saidas_farmacia": [
     {
+      "id": 121,
+      "item_id": 3,
+      "produto_nome": "Amoxicilina 500mg cápsula",
+      "tipo": "Farmácia para Sala de Medicações",
+      "origem": "Farmácia",
+      "destino": "Sala de Medicações",
+      "quantidade": 50,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-05-30",
+      "obs": "",
+      "criado_em": "2026-05-30 14:50:51"
+    },
+    {
       "id": 8,
       "item_id": 1,
       "produto_nome": "Paracetamol 500mg comprimido",
@@ -3091,13 +3117,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 12:24:38",
+      "atualizado_em": "2026-05-30 14:50:51",
       "nome": "Amoxicilina 500mg cápsula",
       "tipo": "Medicamento",
       "unidade": "Cápsula",
       "saldos": {
         "almoxarifado": 48,
-        "farmacia": 210,
+        "farmacia": 160,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3323,13 +3349,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 12:24:38",
+      "atualizado_em": "2026-05-30 14:50:51",
       "nome": "Amoxicilina 500mg cápsula",
       "tipo": "Medicamento",
       "unidade": "Cápsula",
       "saldos": {
         "almoxarifado": 48,
-        "farmacia": 210,
+        "farmacia": 160,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3553,6 +3579,11 @@
         "movimentacoes": 16
       },
       {
+        "destino": "Sala de Medicações",
+        "quantidade": 421,
+        "movimentacoes": 19
+      },
+      {
         "destino": "Posto Rural",
         "quantidade": 398,
         "movimentacoes": 14
@@ -3561,11 +3592,6 @@
         "destino": "Internamento",
         "quantidade": 377,
         "movimentacoes": 14
-      },
-      {
-        "destino": "Sala de Medicações",
-        "quantidade": 371,
-        "movimentacoes": 18
       },
       {
         "destino": "USF Centro",
@@ -3618,6 +3644,12 @@
         "produto": "Soro Fisiológico 0,9% 500ml",
         "destino": "Sala Cirúrgica",
         "quantidade": 86,
+        "movimentacoes": 2
+      },
+      {
+        "produto": "Amoxicilina 500mg cápsula",
+        "destino": "Sala de Medicações",
+        "quantidade": 82,
         "movimentacoes": 2
       },
       {
@@ -3769,12 +3801,6 @@
         "destino": "USF Cidade Nova",
         "quantidade": 32,
         "movimentacoes": 2
-      },
-      {
-        "produto": "Amoxicilina 500mg cápsula",
-        "destino": "Sala de Medicações",
-        "quantidade": 32,
-        "movimentacoes": 1
       },
       {
         "produto": "Ibuprofeno 600mg comprimido",
