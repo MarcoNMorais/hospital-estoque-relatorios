@@ -1,15 +1,15 @@
 {
   "ok": true,
-  "gerado_em": "2026-05-30 14:16:47",
+  "gerado_em": "2026-05-30 14:19:24",
   "hospital": "Hospital Municipal José Mota Araújo",
   "dashboard": {
     "itens_cadastrados": 200,
     "total_almoxarifado": 44793,
-    "total_farmacia": 13375,
+    "total_farmacia": 13325,
     "total_geral": 0,
     "abaixo_minimo": 200,
     "zerados": 200,
-    "saidas_registradas": 333
+    "saidas_registradas": 334
   },
   "itens": [
     {
@@ -136,13 +136,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-05-30 14:19:24",
       "nome": "Agulha 25x7 - Simulado Local 027",
       "tipo": "Insumo",
       "unidade": "Tubo",
       "saldos": {
         "almoxarifado": 314,
-        "farmacia": 142,
+        "farmacia": 92,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -4615,6 +4615,19 @@
   ],
   "movimentacoes": [
     {
+      "id": 504,
+      "item_id": 27,
+      "produto_nome": "Agulha 25x7 - Simulado Local 027",
+      "tipo": "Farmácia para Sala de Medicações",
+      "origem": "Farmácia",
+      "destino": "Sala de Medicações",
+      "quantidade": 50,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-05-30",
+      "obs": "",
+      "criado_em": "2026-05-30 14:19:24"
+    },
+    {
       "id": 503,
       "item_id": 74,
       "produto_nome": "Amitriptilina - Simulado Local 074",
@@ -8500,22 +8513,22 @@
       "data": "2026-02-28",
       "obs": "Movimentação fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27"
-    },
-    {
-      "id": 414,
-      "item_id": 189,
-      "produto_nome": "Ibuprofeno 600mg comprimido - Simulado Local 189",
-      "tipo": "Farmácia para Sala de Medicações",
-      "origem": "Farmácia",
-      "destino": "Sala de Medicações",
-      "quantidade": 33,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-02-27",
-      "obs": "Movimentação fake local para teste de desempenho",
-      "criado_em": "2026-05-30 16:11:27"
     }
   ],
   "saidas_farmacia": [
+    {
+      "id": 504,
+      "item_id": 27,
+      "produto_nome": "Agulha 25x7 - Simulado Local 027",
+      "tipo": "Farmácia para Sala de Medicações",
+      "origem": "Farmácia",
+      "destino": "Sala de Medicações",
+      "quantidade": 50,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-05-30",
+      "obs": "",
+      "criado_em": "2026-05-30 14:19:24"
+    },
     {
       "id": 503,
       "item_id": 74,
@@ -12402,19 +12415,6 @@
       "data": "2025-12-25",
       "obs": "Movimentação fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27"
-    },
-    {
-      "id": 223,
-      "item_id": 50,
-      "produto_nome": "Bromoprida ampola - Simulado Local 050",
-      "tipo": "Farmácia para Vacinação",
-      "origem": "Farmácia",
-      "destino": "Vacinação",
-      "quantidade": 9,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2025-12-23",
-      "obs": "Movimentação fake local para teste de desempenho",
-      "criado_em": "2026-05-30 16:11:27"
     }
   ],
   "baixo_minimo": [
@@ -12542,13 +12542,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-05-30 14:19:24",
       "nome": "Agulha 25x7 - Simulado Local 027",
       "tipo": "Insumo",
       "unidade": "Tubo",
       "saldos": {
         "almoxarifado": 314,
-        "farmacia": 142,
+        "farmacia": 92,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -17144,13 +17144,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-05-30 14:19:24",
       "nome": "Agulha 25x7 - Simulado Local 027",
       "tipo": "Insumo",
       "unidade": "Tubo",
       "saldos": {
         "almoxarifado": 314,
-        "farmacia": 142,
+        "farmacia": 92,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -21625,8 +21625,8 @@
     "por_destino": [
       {
         "destino": "Sala de Medicações",
-        "quantidade": 1530,
-        "movimentacoes": 42
+        "quantidade": 1580,
+        "movimentacoes": 43
       },
       {
         "destino": "CEMES",
@@ -22373,6 +22373,12 @@
         "produto": "Esparadrapo - Simulado Local 035",
         "destino": "USF Rural",
         "quantidade": 51,
+        "movimentacoes": 1
+      },
+      {
+        "produto": "Agulha 25x7 - Simulado Local 027",
+        "destino": "Sala de Medicações",
+        "quantidade": 50,
         "movimentacoes": 1
       },
       {
