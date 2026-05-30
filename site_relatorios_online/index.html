@@ -44,9 +44,9 @@ th,td{padding:10px;border-bottom:1px solid #d8e8f2;font-size:14px}
   <h2>Entrar como Coordenador</h2>
   <p class="muted">Use CPF e senha de Coordenador, Super Coordenador ou Administrador cadastrados no sistema local.</p>
   <label>CPF</label>
-  <input id="cpf" placeholder="000.000.000-00" autocomplete="off">
+  <input id="cpf" placeholder="000.000.000-00" autocomplete="off" inputmode="numeric" maxlength="14">
   <label>Senha</label>
-  <input id="senha" type="password" placeholder="Senha">
+  <input id="senha" type="password" placeholder="Senha" onkeydown="if(event.key==='Enter')login()">
   <button style="width:100%;margin-top:14px" onclick="login()">Entrar</button>
   <div id="msg" class="msg"></div>
 </div>
@@ -117,8 +117,23 @@ th,td{padding:10px;border-bottom:1px solid #d8e8f2;font-size:14px}
 
 <script>
 let DADOS=null;
-
 function onlyDigits(v){return String(v||"").replace(/\D/g,"")}
+function mascaraCPFOnline(){
+  const el = document.getElementById("cpf");
+  let v = onlyDigits(el.value).slice(0,11);
+  if(v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2}).*/, "$1.$2.$3-$4");
+  else if(v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d{1,3}).*/, "$1.$2.$3");
+  else if(v.length > 3) v = v.replace(/(\d{3})(\d{1,3}).*/, "$1.$2");
+  el.value = v;
+}
+document.addEventListener("DOMContentLoaded", ()=>{
+  const c = document.getElementById("cpf");
+  if(c){
+    c.addEventListener("input", mascaraCPFOnline);
+    c.addEventListener("paste", ()=>setTimeout(mascaraCPFOnline, 0));
+    c.addEventListener("keydown", (e)=>{ if(e.key==="Enter") login(); });
+  }
+});
 async function sha256(texto){
   const enc = new TextEncoder().encode(String(texto||""));
   const buf = await crypto.subtle.digest("SHA-256", enc);
@@ -126,20 +141,23 @@ async function sha256(texto){
 }
 function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]))}
 function fmtData(d){if(!d)return "-"; const p=String(d).split("-"); return p.length===3?`${p[2]}/${p[1]}/${p[0]}`:d}
-
 async function carregarDados(){
-  const r = await fetch("dados_relatorios.json?ts="+Date.now());
+  const r = await fetch("dados_relatorios.json?ts="+Date.now(), {cache:"no-store"});
   DADOS = await r.json();
   document.getElementById("geradoEm").textContent = DADOS.gerado_em || "-";
 }
 async function login(){
   document.getElementById("msg").textContent = "";
   try{
+    mascaraCPFOnline();
     await carregarDados();
     const cpf = onlyDigits(document.getElementById("cpf").value);
     const senhaHash = await sha256(document.getElementById("senha").value);
-    const u = (DADOS.usuarios_consulta||[]).find(x=>x.cpf===cpf && x.senha_hash===senhaHash);
-    if(!u) throw new Error("CPF ou senha inválidos.");
+    const usuarios = DADOS.usuarios_consulta || [];
+    const u = usuarios.find(x=>onlyDigits(x.cpf)===cpf && x.senha_hash===senhaHash);
+    if(!u){
+      throw new Error(`CPF ou senha inválidos. Usuários de consulta carregados: ${usuarios.length}.`);
+    }
     localStorage.setItem("relatorio_user", JSON.stringify({nome:u.nome,cpf:u.cpf,perfil:u.perfil}));
     abrirApp();
   }catch(e){
@@ -161,12 +179,7 @@ function aba(id,btn){
 }
 function renderTudo(){
   const d=DADOS.dashboard||{};
-  dItens.textContent=d.itens_cadastrados||0;
-  dAlmox.textContent=d.total_almoxarifado||0;
-  dFarm.textContent=d.total_farmacia||0;
-  dGeral.textContent=d.total_geral||0;
-  dBaixo.textContent=d.abaixo_minimo||0;
-  dZerados.textContent=d.zerados||0;
+  dItens.textContent=d.itens_cadastrados||0; dAlmox.textContent=d.total_almoxarifado||0; dFarm.textContent=d.total_farmacia||0; dGeral.textContent=d.total_geral||0; dBaixo.textContent=d.abaixo_minimo||0; dZerados.textContent=d.zerados||0;
   baixoBody.innerHTML=(DADOS.baixo_minimo||[]).slice(0,20).map(i=>`<tr><td><strong>${esc(i.nome)}</strong></td><td>${i.total}</td><td>${i.minimo}</td><td>${i.saldos.almoxarifado}</td><td>${i.saldos.farmacia}</td></tr>`).join("") || `<tr><td colspan="5">Nenhum item abaixo do mínimo.</td></tr>`;
   renderEstoque();
   destinoBody.innerHTML=(DADOS.estatisticas?.por_destino||[]).map(x=>`<tr><td>${esc(x.destino)}</td><td><strong>${x.quantidade}</strong></td><td>${x.movimentacoes}</td></tr>`).join("") || `<tr><td colspan="3">Sem dados.</td></tr>`;
@@ -179,11 +192,7 @@ function renderEstoque(){
   const lista=(DADOS.itens||[]).filter(i=>(!q||String(i.nome||"").toLowerCase().includes(q))&&(!tipo||i.tipo===tipo));
   estoqueBody.innerHTML=lista.map(i=>`<tr><td><strong>${esc(i.nome)}</strong></td><td>${esc(i.tipo)}</td><td>${esc(i.unidade)}</td><td>${i.saldos.almoxarifado}</td><td>${i.saldos.farmacia}</td><td><strong>${i.total}</strong></td><td>${i.minimo}</td></tr>`).join("") || `<tr><td colspan="7">Nenhum item encontrado.</td></tr>`;
 }
-(async()=>{
-  if(localStorage.getItem("relatorio_user")){
-    abrirApp();
-  }
-})();
+(async()=>{ if(localStorage.getItem("relatorio_user")) abrirApp(); })();
 </script>
 </body>
 </html>
