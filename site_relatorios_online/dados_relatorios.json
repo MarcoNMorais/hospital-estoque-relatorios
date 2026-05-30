@@ -1,15 +1,15 @@
 {
   "ok": true,
-  "gerado_em": "2026-05-30 12:15:44",
+  "gerado_em": "2026-05-30 12:17:55",
   "hospital": "Hospital Municipal José Mota Araújo",
   "dashboard": {
     "itens_cadastrados": 10,
     "total_almoxarifado": 1341,
-    "total_farmacia": 344,
+    "total_farmacia": 334,
     "total_geral": 0,
     "abaixo_minimo": 10,
     "zerados": 10,
-    "saidas_registradas": 99
+    "saidas_registradas": 100
   },
   "itens": [
     {
@@ -159,13 +159,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-29 20:18:33",
+      "atualizado_em": "2026-05-30 12:17:55",
       "nome": "Paracetamol 500mg comprimido",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
         "almoxarifado": 169,
-        "farmacia": 21,
+        "farmacia": 11,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -244,6 +244,19 @@
     }
   ],
   "movimentacoes": [
+    {
+      "id": 121,
+      "item_id": 1,
+      "produto_nome": "Paracetamol 500mg comprimido",
+      "tipo": "Baixa Farmácia",
+      "origem": "Farmácia",
+      "destino": "Baixa/Perda/Vencimento",
+      "quantidade": 10,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-05-30",
+      "obs": "",
+      "criado_em": "2026-05-30 12:17:55"
+    },
     {
       "id": 120,
       "item_id": 7,
@@ -1807,6 +1820,19 @@
   ],
   "saidas_farmacia": [
     {
+      "id": 121,
+      "item_id": 1,
+      "produto_nome": "Paracetamol 500mg comprimido",
+      "tipo": "Baixa Farmácia",
+      "origem": "Farmácia",
+      "destino": "Baixa/Perda/Vencimento",
+      "quantidade": 10,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-05-30",
+      "obs": "",
+      "criado_em": "2026-05-30 12:17:55"
+    },
+    {
       "id": 120,
       "item_id": 7,
       "produto_nome": "Seringa 5ml",
@@ -3242,13 +3268,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-29 20:18:33",
+      "atualizado_em": "2026-05-30 12:17:55",
       "nome": "Paracetamol 500mg comprimido",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
         "almoxarifado": 169,
-        "farmacia": 21,
+        "farmacia": 11,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3474,13 +3500,13 @@
       "origem": "",
       "obs": "Simulação para teste de estatísticas",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-29 20:18:33",
+      "atualizado_em": "2026-05-30 12:17:55",
       "nome": "Paracetamol 500mg comprimido",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
         "almoxarifado": 169,
-        "farmacia": 21,
+        "farmacia": 11,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3587,8 +3613,8 @@
       },
       {
         "destino": "Baixa/Perda/Vencimento",
-        "quantidade": 273,
-        "movimentacoes": 11
+        "quantidade": 283,
+        "movimentacoes": 12
       },
       {
         "destino": "USF Cidade Nova",
@@ -3889,6 +3915,12 @@
         "produto": "Seringa 5ml",
         "destino": "Baixa/Perda/Vencimento",
         "quantidade": 13,
+        "movimentacoes": 1
+      },
+      {
+        "produto": "Paracetamol 500mg comprimido",
+        "destino": "Baixa/Perda/Vencimento",
+        "quantidade": 10,
         "movimentacoes": 1
       },
       {
