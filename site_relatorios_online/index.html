@@ -182,7 +182,7 @@
     @media(max-width:700px){.filter-bar{grid-template-columns:1fr}}
 
   
-    /* V70 - logo do portal online sem depender de imagem externa */
+    /* V71 - logo do portal online sem depender de imagem externa */
     .login-logo-wrap{
       display:flex;
       justify-content:center;
@@ -248,7 +248,7 @@
     }
 
   
-    /* V70 - logo visível no login online */
+    /* V71 - logo visível no login online */
     .login-brand-v69{
       width:100%;
       display:flex;
@@ -295,7 +295,7 @@
     }
 
   
-    /* V70 - logo, paginação e comportamento correto hospital/central */
+    /* V71 - logo, paginação e comportamento correto hospital/central */
     .login-card .login-brand-v70{
       width:100%;
       display:flex!important;
@@ -389,6 +389,52 @@
     @media(max-width:540px){
       .login-card .login-brand-v70{flex-direction:column;text-align:center}
       .login-brand-text-v70 strong{font-size:22px}
+    }
+
+  
+    /* V71 - logo definitivo no login online */
+    .login-logo-final-v71{
+      display:flex!important;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      width:100%;
+      margin:6px auto 24px;
+      padding:10px 0 4px;
+    }
+    .login-logo-final-v71 .mark{
+      width:76px;
+      height:76px;
+      border-radius:26px;
+      background:linear-gradient(135deg,#0a2348 0%,#005cb9 72%,#d3a246 100%);
+      color:#fff;
+      display:grid;
+      place-items:center;
+      font-weight:1000;
+      font-size:26px;
+      box-shadow:0 14px 28px rgba(0,59,122,.25);
+      flex:0 0 auto;
+    }
+    .login-logo-final-v71 .txt strong{
+      display:block;
+      color:#0a2348;
+      font-weight:1000;
+      font-size:25px;
+      line-height:1.05;
+    }
+    .login-logo-final-v71 .txt span{
+      display:block;
+      margin-top:6px;
+      color:#005cb9;
+      font-weight:900;
+      font-size:13px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .login-logo-wrap,.portal-logo-v68,.login-brand-v69,.login-brand-v70,.login-logo{display:none!important}
+    @media(max-width:540px){
+      .login-logo-final-v71{flex-direction:column;text-align:center}
+      .login-logo-final-v71 .txt strong{font-size:22px}
     }
 
   </style>
@@ -1488,7 +1534,7 @@
 
 
 <script>
-/* ===== V70 ONLINE: HOSPITAL RECEBE DADOS LOCAIS + PAGINAÇÃO ===== */
+/* ===== V71 ONLINE: HOSPITAL RECEBE DADOS LOCAIS + PAGINAÇÃO ===== */
 (function(){
   window.__v70Pages = window.__v70Pages || {};
 
@@ -1755,6 +1801,106 @@
   document.addEventListener("DOMContentLoaded", v70EnsureLogo);
   setTimeout(v70EnsureLogo, 300);
   setTimeout(v70EnsureLogo, 1200);
+})();
+</script>
+
+
+<script>
+/* ===== V71 ONLINE: RESUMO REAL + TABELA COM FILTRO ===== */
+(function(){
+  window.__v71Pages = window.__v71Pages || {};
+  function H(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]))}
+  function F(d){if(!d)return "-";const p=String(d).split("-");return p.length>=3?`${p[2]}/${p[1]}/${p[0]}`:d}
+  function tipos(){return [...new Set((window.DADOS?.itens||[]).map(i=>i.tipo).filter(Boolean))].sort()}
+  function mapaTipo(){const m={};(window.DADOS?.itens||[]).forEach(i=>m[String(i.nome||"").toLowerCase()] = i.tipo || "");return m}
+  function periodo(data, ini, fim){if(!data)return true;if(ini&&data<ini)return false;if(fim&&data>fim)return false;return true}
+  function state(k){if(!window.__v71Pages[k]) window.__v71Pages[k]={page:1,per:10,searched:false};return window.__v71Pages[k]}
+  function pager(total,key,call){
+    const st=state(key); const pages=Math.max(1,Math.ceil(total/st.per)); if(st.page>pages)st.page=pages;
+    return `<div class="pager-bar"><div>Mostrando ${total?((st.page-1)*st.per)+1:0} a ${Math.min(st.page*st.per,total)} de ${total}. Página ${st.page} de ${pages}.</div><div class="pager-actions"><label>Por página: <select onchange="window.__v71Pages['${key}'].per=parseInt(this.value);window.__v71Pages['${key}'].page=1;${call}">${[10,20,50,100].map(n=>`<option value="${n}" ${st.per===n?"selected":""}>${n}</option>`).join("")}</select></label><button ${st.page<=1?"disabled":""} onclick="window.__v71Pages['${key}'].page--;${call}">Anterior</button><button ${st.page>=pages?"disabled":""} onclick="window.__v71Pages['${key}'].page++;${call}">Próxima</button></div></div>`;
+  }
+  function logo(){
+    const card=document.querySelector(".login-card");
+    if(!card || document.querySelector(".login-logo-final-v71")) return;
+    const div=document.createElement("div");
+    div.className="login-logo-final-v71";
+    div.innerHTML=`<div class="mark">SV</div><div class="txt"><strong>Secretaria da Saúde</strong><span>Prefeitura de Valente</span></div>`;
+    card.insertBefore(div, card.firstChild);
+  }
+  window.v71FiltrarEstoque=function(id,titulo,local){const st=state(id);st.searched=true;st.page=1;renderEstoqueSecao(id,titulo,local)}
+  window.v71LimparEstoque=function(id,titulo,local){const st=state(id);st.searched=false;st.page=1;["Busca","Tipo","Situacao"].forEach(s=>{const e=document.getElementById(id+s);if(e)e.value=""});renderEstoqueSecao(id,titulo,local)}
+  window.v71FiltrarEstatistica=function(id,titulo,local){const st=state(id);st.searched=true;st.page=1;renderEstatisticaAlmox(id,titulo,local)}
+  window.v71LimparEstatistica=function(id,titulo,local){const st=state(id);st.searched=false;st.page=1;["Busca","Tipo","Destino","Ini","Fim"].forEach(s=>{const e=document.getElementById(id+s);if(e)e.value=""});renderEstatisticaAlmox(id,titulo,local)}
+
+  window.renderEstoqueSecao=function(id,titulo,local){
+    const el=document.getElementById(id); if(!el)return;
+    const st=state(id), isCentral=id==="estoqueCentral";
+    const buscaId=id+"Busca", tipoId=id+"Tipo", sitId=id+"Situacao";
+    const busca=document.getElementById(buscaId)?.value||"", tipoFiltro=document.getElementById(tipoId)?.value||"", sitFiltro=document.getElementById(sitId)?.value||"";
+    const fonte=isCentral?[]:(window.DADOS?.itens||[]);
+    const totalLocal=fonte.reduce((a,i)=>a+(Number(i.saldos?.[local])||0),0);
+    const baixo=fonte.filter(i=>Number(i.minimo||0)>0 && Number(i.total||0)<=Number(i.minimo||0));
+    let filtrados=[];
+    if(st.searched){
+      filtrados=fonte.filter(i=>{
+        const saldo=Number(i.saldos?.[local])||0, min=Number(i.minimo)||0, total=Number(i.total)||0;
+        const status=min>0&&total<=min?"baixo":saldo<=0?"zerado":"normal";
+        return (!busca||String(i.nome||"").toLowerCase().includes(busca.toLowerCase())) && (!tipoFiltro||String(i.tipo||"")===tipoFiltro) && (!sitFiltro||status===sitFiltro);
+      });
+    }
+    const page=filtrados.slice((st.page-1)*st.per,(st.page-1)*st.per+st.per);
+    const rows=page.map(i=>{
+      const saldo=Number(i.saldos?.[local])||0, min=Number(i.minimo)||0, total=Number(i.total)||0;
+      const sit=min>0&&total<=min?'<span class="badge yellow">Abaixo mínimo</span>':saldo<=0?'<span class="badge purple">Zerado</span>':'<span class="badge green">Normal</span>';
+      return `<tr><td><strong>${H(i.nome)}</strong></td><td>${H(i.tipo||"-")}</td><td>${H(i.unidade||"-")}</td><td>${saldo}</td><td>${min}</td><td>${sit}</td></tr>`;
+    }).join("");
+    const msg=isCentral?"Almoxerifado Central reservado. Os dados locais aparecem no Almoxerifado Hospital.":"Use os filtros e clique em Filtrar para carregar os produtos.";
+    el.innerHTML=`<div class="cards"><div class="card"><div class="label">Itens cadastrados</div><div class="value">${fonte.length}</div><div class="sub">${isCentral?"Aguardando integração":"Produtos sincronizados"}</div></div><div class="card"><div class="label">Saldo nesta unidade</div><div class="value">${totalLocal}</div><div class="sub">${H(titulo)}</div></div><div class="card"><div class="label">Abaixo do mínimo</div><div class="value warn">${baixo.length}</div><div class="sub">Itens para atenção</div></div><div class="card"><div class="label">Filtrados</div><div class="value">${filtrados.length}</div><div class="sub">Resultado atual</div></div></div><div class="card"><h3 class="section-title">Itens do ${H(titulo)}</h3><div class="filter-help">${msg}</div><div class="filter-bar"><div class="field"><label>Produto</label><input id="${buscaId}" placeholder="Buscar produto..." value="${H(busca)}"></div><div class="field"><label>Tipo</label><select id="${tipoId}"><option value="">Todos</option>${tipos().map(t=>`<option ${t===tipoFiltro?"selected":""}>${H(t)}</option>`).join("")}</select></div><div class="field"><label>Situação</label><select id="${sitId}"><option value="">Todas</option><option value="normal" ${sitFiltro==="normal"?"selected":""}>Normal</option><option value="baixo" ${sitFiltro==="baixo"?"selected":""}>Abaixo do mínimo</option><option value="zerado" ${sitFiltro==="zerado"?"selected":""}>Zerado</option></select></div><div></div><button class="btn small" onclick="v71FiltrarEstoque('${id}','${titulo}','${local}')">Filtrar</button><button class="btn small" onclick="v71LimparEstoque('${id}','${titulo}','${local}')">Limpar</button></div><div class="table-wrap"><table><thead><tr><th>Item</th><th>Categoria</th><th>Unidade</th><th>Saldo</th><th>Mínimo</th><th>Situação</th></tr></thead><tbody>${st.searched?(rows||'<tr><td colspan="6">Nenhum item encontrado.</td></tr>'):`<tr><td colspan="6">${msg}</td></tr>`}</tbody></table></div>${st.searched?pager(filtrados.length,id,`renderEstoqueSecao('${id}','${titulo}','${local}')`):""}</div>`;
+  };
+
+  window.renderEstatisticaAlmox=function(id,titulo,local){
+    const el=document.getElementById(id); if(!el)return;
+    const st=state(id), isCentral=id==="almoxCentral";
+    const buscaId=id+"Busca", tipoId=id+"Tipo", destId=id+"Destino", iniId=id+"Ini", fimId=id+"Fim";
+    const busca=document.getElementById(buscaId)?.value||"", tipoFiltro=document.getElementById(tipoId)?.value||"", destFiltro=document.getElementById(destId)?.value||"", ini=document.getElementById(iniId)?.value||"", fim=document.getElementById(fimId)?.value||"";
+    const mt=mapaTipo();
+    const base=isCentral?[]:(window.DADOS?.movimentacoes||[]);
+    const resumoMovs=base; // resumo real, mesmo sem filtro
+    let movs=[];
+    if(st.searched){
+      movs=base.filter(m=>{
+        const nome=String(m.produto_nome||""), tipo=mt[nome.toLowerCase()]||"";
+        return (!busca||nome.toLowerCase().includes(busca.toLowerCase())) && (!tipoFiltro||tipo===tipoFiltro) && (!destFiltro||String(m.destino||"")===destFiltro) && periodo(String(m.data||""),ini,fim);
+      });
+    }
+    const entradasResumo=resumoMovs.filter(m=>String(m.destino||"").toLowerCase().includes("almox")||String(m.tipo||"").toLowerCase().includes("entrada")).length;
+    const saidasResumo=resumoMovs.filter(m=>String(m.origem||"").toLowerCase().includes("almox")||String(m.origem||"").toLowerCase().includes("farm")).length;
+    const qtdResumo=resumoMovs.reduce((a,m)=>a+(Number(m.quantidade)||0),0);
+    const entradas=st.searched?movs.filter(m=>String(m.tipo||"").toLowerCase().includes("entrada")).length:entradasResumo;
+    const saidas=st.searched?movs.filter(m=>!String(m.tipo||"").toLowerCase().includes("entrada")).length:saidasResumo;
+    const qtd=st.searched?movs.reduce((a,m)=>a+(Number(m.quantidade)||0),0):qtdResumo;
+    const porTipo={};
+    movs.forEach(m=>{const nome=String(m.produto_nome||""), tipo=mt[nome.toLowerCase()]||"Sem tipo";porTipo[tipo]=(porTipo[tipo]||0)+(Number(m.quantidade)||0)});
+    const rowsTipo=Object.entries(porTipo).sort((a,b)=>b[1]-a[1]).map(([t,q])=>`<tr><td>${H(t)}</td><td><strong>${q}</strong></td></tr>`).join("");
+    const page=movs.slice((st.page-1)*st.per,(st.page-1)*st.per+st.per);
+    const rows=page.map(m=>`<tr><td>${F(m.data)}</td><td><strong>${H(m.produto_nome||"-")}</strong></td><td>${H(mt[String(m.produto_nome||"").toLowerCase()]||"-")}</td><td>${H(m.origem||"")}</td><td>${H(m.destino||"")}</td><td><strong>${m.quantidade||0}</strong></td></tr>`).join("");
+    const destinos=[...new Set(base.map(m=>m.destino).filter(Boolean))].sort();
+    const msg=isCentral?"Almoxerifado Central reservado. As estatísticas locais aparecem no Almoxerifado Hospital.":"Resumo acima já usa os dados enviados. Use filtros para carregar a tabela.";
+    el.innerHTML=`<div class="cards"><div class="card"><div class="label">${st.searched?"Entradas filtradas":"Entradas registradas"}</div><div class="value">${entradas}</div><div class="sub">Movimentações de entrada</div></div><div class="card"><div class="label">${st.searched?"Saídas filtradas":"Saídas registradas"}</div><div class="value">${saidas}</div><div class="sub">Movimentações de saída</div></div><div class="card"><div class="label">Quantidade movimentada</div><div class="value">${qtd}</div><div class="sub">${st.searched?"Soma do filtro atual":"Soma geral sincronizada"}</div></div><div class="card"><div class="label">${st.searched?"Registros filtrados":"Registros enviados"}</div><div class="value">${st.searched?movs.length:base.length}</div><div class="sub">${isCentral?"Aguardando integração":"Dados do estoque local"}</div></div></div><div class="card"><h3 class="section-title">Filtros da estatística — ${H(titulo)}</h3><div class="filter-help">${msg}</div><div class="filter-bar"><div class="field"><label>Produto</label><input id="${buscaId}" placeholder="Buscar produto..." value="${H(busca)}"></div><div class="field"><label>Tipo</label><select id="${tipoId}"><option value="">Todos</option>${tipos().map(t=>`<option ${t===tipoFiltro?"selected":""}>${H(t)}</option>`).join("")}</select></div><div class="field"><label>Destino</label><select id="${destId}"><option value="">Todos</option>${destinos.map(d=>`<option ${d===destFiltro?"selected":""}>${H(d)}</option>`).join("")}</select></div><div class="field"><label>Data inicial</label><input id="${iniId}" type="date" value="${H(ini)}"></div><div class="field"><label>Data final</label><input id="${fimId}" type="date" value="${H(fim)}"></div><button class="btn small" onclick="v71FiltrarEstatistica('${id}','${titulo}','${local}')">Filtrar</button><button class="btn small" onclick="v71LimparEstatistica('${id}','${titulo}','${local}')">Limpar</button></div></div><div class="grid-2"><div class="card"><h3 class="section-title">Quantidade por tipo</h3><div class="table-wrap"><table><thead><tr><th>Tipo</th><th>Quantidade</th></tr></thead><tbody>${st.searched?(rowsTipo||'<tr><td colspan="2">Sem dados no filtro.</td></tr>'):`<tr><td colspan="2">${msg}</td></tr>`}</tbody></table></div></div><div class="card"><h3 class="section-title">Movimentações filtradas</h3><div class="table-wrap"><table><thead><tr><th>Data</th><th>Produto</th><th>Tipo</th><th>Origem</th><th>Destino</th><th>Qtd</th></tr></thead><tbody>${st.searched?(rows||'<tr><td colspan="6">Sem movimentações no filtro.</td></tr>'):`<tr><td colspan="6">${msg}</td></tr>`}</tbody></table></div>${st.searched?pager(movs.length,id,`renderEstatisticaAlmox('${id}','${titulo}','${local}')`):""}</div></div>`;
+  };
+
+  window.renderAlmox=function(){
+    renderEstoqueSecao("estoqueHospital","Almoxerifado Hospital","almoxarifado");
+    renderEstatisticaAlmox("almoxHospital","Almoxerifado Hospital","almoxarifado");
+    renderEstoqueSecao("estoqueCentral","Almoxerifado Central","almoxarifado");
+    renderEstatisticaAlmox("almoxCentral","Almoxerifado Central","almoxarifado");
+  };
+  const oldAplicar=window.aplicarPerfil;
+  if(typeof oldAplicar==="function"&&!window.__v71aplicar){
+    window.__v71aplicar=true;
+    window.aplicarPerfil=function(u){oldAplicar.apply(this,arguments);setTimeout(()=>{logo(); if(u&&(u.tipo==="admin"||(u.modulos||[]).includes("almox")))showSection("estoqueHospital",document.querySelector('[data-target="estoqueHospital"]'));},120)}
+  }
+  document.addEventListener("DOMContentLoaded",logo); setTimeout(logo,200); setTimeout(logo,1000);
 })();
 </script>
 
