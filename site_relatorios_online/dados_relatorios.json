@@ -1,15 +1,15 @@
 {
   "ok": true,
-  "gerado_em": "2026-05-30 14:12:26",
+  "gerado_em": "2026-05-30 14:14:03",
   "hospital": "Hospital Municipal José Mota Araújo",
   "dashboard": {
     "itens_cadastrados": 200,
-    "total_almoxarifado": 43893,
-    "total_farmacia": 13385,
+    "total_almoxarifado": 44793,
+    "total_farmacia": 13475,
     "total_geral": 0,
     "abaixo_minimo": 200,
     "zerados": 200,
-    "saidas_registradas": 332
+    "saidas_registradas": 331
   },
   "itens": [
     {
@@ -44,13 +44,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 14:12:26",
+      "atualizado_em": "2026-05-30 16:11:27",
       "nome": "AAS 100mg comprimido - Simulado Local 104",
       "tipo": "Outro",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 100,
-        "farmacia": 11,
+        "farmacia": 101,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -3147,14 +3147,14 @@
       "validade": "",
       "lote": "",
       "origem": "",
-      "obs": "Simulação para teste de estatísticas",
+      "obs": "",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-05-30 13:38:49",
       "nome": "Paracetamol 500mg comprimido",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
-        "almoxarifado": 168,
+        "almoxarifado": 1068,
         "farmacia": 22,
         "salaMedicacoes": 0,
         "internamento": 0,
@@ -4616,16 +4616,16 @@
   "movimentacoes": [
     {
       "id": 501,
-      "item_id": 104,
-      "produto_nome": "AAS 100mg comprimido - Simulado Local 104",
-      "tipo": "Farmácia para Sala de Medicações",
-      "origem": "Farmácia",
-      "destino": "Sala de Medicações",
-      "quantidade": 90,
+      "item_id": 1,
+      "produto_nome": "Paracetamol 500mg comprimido",
+      "tipo": "Entrada no Almoxarifado",
+      "origem": "Entrada externa",
+      "destino": "Almoxarifado",
+      "quantidade": 900,
       "responsavel": "Almoxarifado Teste",
       "data": "2026-05-30",
       "obs": "",
-      "criado_em": "2026-05-30 14:12:26"
+      "criado_em": "2026-05-30 13:38:49"
     },
     {
       "id": 462,
@@ -8517,19 +8517,6 @@
   ],
   "saidas_farmacia": [
     {
-      "id": 501,
-      "item_id": 104,
-      "produto_nome": "AAS 100mg comprimido - Simulado Local 104",
-      "tipo": "Farmácia para Sala de Medicações",
-      "origem": "Farmácia",
-      "destino": "Sala de Medicações",
-      "quantidade": 90,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-05-30",
-      "obs": "",
-      "criado_em": "2026-05-30 14:12:26"
-    },
-    {
       "id": 340,
       "item_id": 127,
       "produto_nome": "Atadura 10cm - Simulado Local 127",
@@ -12415,6 +12402,19 @@
       "data": "2025-12-23",
       "obs": "Movimentação fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27"
+    },
+    {
+      "id": 445,
+      "item_id": 126,
+      "produto_nome": "Gaze estéril pacote - Simulado Local 126",
+      "tipo": "Farmácia para USF Cidade Nova",
+      "origem": "Farmácia",
+      "destino": "USF Cidade Nova",
+      "quantidade": 14,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2025-12-22",
+      "obs": "Movimentação fake local para teste de desempenho",
+      "criado_em": "2026-05-30 16:11:27"
     }
   ],
   "baixo_minimo": [
@@ -12450,13 +12450,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 14:12:26",
+      "atualizado_em": "2026-05-30 16:11:27",
       "nome": "AAS 100mg comprimido - Simulado Local 104",
       "tipo": "Outro",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 100,
-        "farmacia": 11,
+        "farmacia": 101,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -15553,14 +15553,14 @@
       "validade": "",
       "lote": "",
       "origem": "",
-      "obs": "Simulação para teste de estatísticas",
+      "obs": "",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-05-30 13:38:49",
       "nome": "Paracetamol 500mg comprimido",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
-        "almoxarifado": 168,
+        "almoxarifado": 1068,
         "farmacia": 22,
         "salaMedicacoes": 0,
         "internamento": 0,
@@ -17052,13 +17052,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 14:12:26",
+      "atualizado_em": "2026-05-30 16:11:27",
       "nome": "AAS 100mg comprimido - Simulado Local 104",
       "tipo": "Outro",
       "unidade": "Unidade",
       "saldos": {
         "almoxarifado": 100,
-        "farmacia": 11,
+        "farmacia": 101,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -20155,14 +20155,14 @@
       "validade": "",
       "lote": "",
       "origem": "",
-      "obs": "Simulação para teste de estatísticas",
+      "obs": "",
       "criado_em": "2026-05-29 20:18:33",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-05-30 13:38:49",
       "nome": "Paracetamol 500mg comprimido",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
-        "almoxarifado": 168,
+        "almoxarifado": 1068,
         "farmacia": 22,
         "salaMedicacoes": 0,
         "internamento": 0,
@@ -21625,8 +21625,8 @@
     "por_destino": [
       {
         "destino": "Sala de Medicações",
-        "quantidade": 1520,
-        "movimentacoes": 41
+        "quantidade": 1430,
+        "movimentacoes": 40
       },
       {
         "destino": "CEMES",
@@ -21780,12 +21780,6 @@
         "destino": "Baixa/Perda/Vencimento",
         "quantidade": 91,
         "movimentacoes": 3
-      },
-      {
-        "produto": "AAS 100mg comprimido - Simulado Local 104",
-        "destino": "Sala de Medicações",
-        "quantidade": 90,
-        "movimentacoes": 1
       },
       {
         "produto": "Sonda Foley - Simulado Local 137",
