@@ -1,15 +1,15 @@
 {
   "ok": true,
-  "gerado_em": "2026-06-01 10:40:42",
+  "gerado_em": "2026-06-01 10:42:16",
   "hospital": "Hospital Municipal José Mota Araújo",
   "dashboard": {
     "itens_cadastrados": 202,
     "total_almoxarifado": 43793,
-    "total_farmacia": 13725,
+    "total_farmacia": 13675,
     "total_geral": 0,
     "abaixo_minimo": 201,
     "zerados": 202,
-    "saidas_registradas": 331
+    "saidas_registradas": 332
   },
   "itens": [
     {
@@ -159,13 +159,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-06-01 10:42:16",
       "nome": "Agulha 25x7 - Simulado Local 120",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
         "almoxarifado": 349,
-        "farmacia": 124,
+        "farmacia": 74,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -4661,6 +4661,19 @@
   ],
   "movimentacoes": [
     {
+      "id": 505,
+      "item_id": 120,
+      "produto_nome": "Agulha 25x7 - Simulado Local 120",
+      "tipo": "Farmácia para Sala Cirúrgica",
+      "origem": "Farmácia",
+      "destino": "Sala Cirúrgica",
+      "quantidade": 50,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-06-01",
+      "obs": "",
+      "criado_em": "2026-06-01 10:42:16"
+    },
+    {
       "id": 504,
       "item_id": 11,
       "produto_nome": "AAS 100mg comprimido - Simulado Local 011",
@@ -8546,22 +8559,22 @@
       "data": "2026-02-28",
       "obs": "Movimentação fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27"
-    },
-    {
-      "id": 146,
-      "item_id": 155,
-      "produto_nome": "Compressa não estéril - Simulado Local 155",
-      "tipo": "Farmácia para Posto Rural",
-      "origem": "Farmácia",
-      "destino": "Posto Rural",
-      "quantidade": 34,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2026-02-28",
-      "obs": "Movimentação fake local para teste de desempenho",
-      "criado_em": "2026-05-30 16:11:27"
     }
   ],
   "saidas_farmacia": [
+    {
+      "id": 505,
+      "item_id": 120,
+      "produto_nome": "Agulha 25x7 - Simulado Local 120",
+      "tipo": "Farmácia para Sala Cirúrgica",
+      "origem": "Farmácia",
+      "destino": "Sala Cirúrgica",
+      "quantidade": 50,
+      "responsavel": "Almoxarifado Teste",
+      "data": "2026-06-01",
+      "obs": "",
+      "criado_em": "2026-06-01 10:42:16"
+    },
     {
       "id": 340,
       "item_id": 127,
@@ -12448,19 +12461,6 @@
       "data": "2025-12-23",
       "obs": "Movimentação fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27"
-    },
-    {
-      "id": 445,
-      "item_id": 126,
-      "produto_nome": "Gaze estéril pacote - Simulado Local 126",
-      "tipo": "Farmácia para USF Cidade Nova",
-      "origem": "Farmácia",
-      "destino": "USF Cidade Nova",
-      "quantidade": 14,
-      "responsavel": "Almoxarifado Teste",
-      "data": "2025-12-22",
-      "obs": "Movimentação fake local para teste de desempenho",
-      "criado_em": "2026-05-30 16:11:27"
     }
   ],
   "baixo_minimo": [
@@ -12611,13 +12611,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-06-01 10:42:16",
       "nome": "Agulha 25x7 - Simulado Local 120",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
         "almoxarifado": 349,
-        "farmacia": 124,
+        "farmacia": 74,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -17236,13 +17236,13 @@
       "origem": "",
       "obs": "Produto fake local para teste de desempenho",
       "criado_em": "2026-05-30 16:11:27",
-      "atualizado_em": "2026-05-30 16:11:27",
+      "atualizado_em": "2026-06-01 10:42:16",
       "nome": "Agulha 25x7 - Simulado Local 120",
       "tipo": "Medicamento",
       "unidade": "Comprimido",
       "saldos": {
         "almoxarifado": 349,
-        "farmacia": 124,
+        "farmacia": 74,
         "salaMedicacoes": 0,
         "internamento": 0,
         "salaCirurgica": 0,
@@ -21780,8 +21780,8 @@
       },
       {
         "destino": "Sala Cirúrgica",
-        "quantidade": 955,
-        "movimentacoes": 26
+        "quantidade": 1005,
+        "movimentacoes": 27
       },
       {
         "destino": "Odontologia",
@@ -22488,6 +22488,12 @@
         "produto": "Esparadrapo - Simulado Local 035",
         "destino": "USF Rural",
         "quantidade": 51,
+        "movimentacoes": 1
+      },
+      {
+        "produto": "Agulha 25x7 - Simulado Local 120",
+        "destino": "Sala Cirúrgica",
+        "quantidade": 50,
         "movimentacoes": 1
       },
       {
