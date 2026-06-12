@@ -141,12 +141,51 @@
     }
   </style>
 
+
+  <style id="portal-valente-logo-ajustes">
+    .login-logo-img-valente {
+      width: 100%;
+      max-width: 310px;
+      max-height: 170px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 18px;
+      border-radius: 14px;
+    }
+    .sidebar-logo-oficial-valente {
+      width: 100%;
+      max-height: 92px;
+      object-fit: contain;
+      background: rgba(255,255,255,.96);
+      border-radius: 14px;
+      padding: 8px;
+      margin: 0 0 14px;
+      box-shadow: 0 8px 18px rgba(0,0,0,.12);
+    }
+    .top-logo-oficial-valente {
+      height: 64px;
+      max-width: 230px;
+      object-fit: contain;
+      background: #fff;
+      border: 1px solid rgba(0,59,122,.12);
+      border-radius: 14px;
+      padding: 6px 10px;
+      margin-right: 14px;
+    }
+    .portal-top-logo-row-valente {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  </style>
+
 </head>
 <body>
 
   <div id="loginPortalValente" class="login-overlay-valente">
     <div class="login-card-valente">
       <div class="login-card-inner-valente">
+        <img class="login-logo-img-valente" src="assets/logo_secretaria_valente.png" alt="Secretaria da Saúde - Prefeitura de Valente">
         <div class="login-logo-valente">
           <div class="login-logo-mark-valente">SV</div>
           <div class="login-logo-text-valente">
@@ -232,10 +271,6 @@
       }
 
       function liberarPortal(usuario){
-        try{
-          sessionStorage.setItem('portal_valente_logado', '1');
-          sessionStorage.setItem('portal_valente_usuario', JSON.stringify(usuario));
-        }catch(e){}
 
         document.body.classList.remove('portal-login-bloqueado');
         if(overlay) overlay.style.display = 'none';
@@ -281,15 +316,8 @@
         });
       }
 
+      try{ sessionStorage.removeItem('portal_valente_logado'); sessionStorage.removeItem('portal_valente_usuario'); }catch(e){}
       document.body.classList.add('portal-login-bloqueado');
-
-      try{
-        const logado = sessionStorage.getItem('portal_valente_logado') === '1';
-        const usuario = JSON.parse(sessionStorage.getItem('portal_valente_usuario') || 'null');
-        if(logado && usuario){
-          liberarPortal(usuario);
-        }
-      }catch(e){}
 
     })();
   </script>
