@@ -1,0 +1,80 @@
+{
+  "titulo": "Secretaria da Saúde",
+  "subtitulo": "Prefeitura de Valente",
+  "perfil_nome": "Administrador Online",
+  "perfil_desc": "Administração do Portal Online",
+  "modulos": [
+    {
+      "id": "VisaoGeral",
+      "titulo": "🏠 Visão Geral",
+      "url": "VisaoGeral/"
+    },
+    {
+      "id": "HospitalGeral",
+      "titulo": "🚑 Hospital Geral",
+      "url": "HospitalGeral/"
+    },
+    {
+      "id": "CEMES",
+      "titulo": "🩺 CEMES",
+      "url": "CEMES/"
+    },
+    {
+      "id": "CIS",
+      "titulo": "🏥 CIS",
+      "url": "CIS/"
+    },
+    {
+      "id": "PostosDeSaude",
+      "titulo": "🏨 Postos de Saúde",
+      "url": "PostosDeSaude/"
+    },
+    {
+      "id": "CAPS",
+      "titulo": "🧠 CAPS",
+      "url": "CAPS/"
+    },
+    {
+      "id": "AgentesDeSaude",
+      "titulo": "👥 Agentes de Saúde",
+      "url": "AgentesDeSaude/"
+    },
+    {
+      "id": "AlmoxerifadoHospital",
+      "titulo": "📦 Almoxerifado Hospital",
+      "children": [
+        {
+          "id": "AH_Estoque",
+          "titulo": "Estoque",
+          "url": "AlmoxerifadoHospital/Estoque/"
+        },
+        {
+          "id": "AH_Estatisticas",
+          "titulo": "Estatística",
+          "url": "AlmoxerifadoHospital/Estatisticas/"
+        }
+      ]
+    },
+    {
+      "id": "AlmoxerifadoCentral",
+      "titulo": "🏬 Almoxerifado Central",
+      "children": [
+        {
+          "id": "AC_Estoque",
+          "titulo": "Estoque",
+          "url": "AlmoxerifadoCentral/Estoque/"
+        },
+        {
+          "id": "AC_Estatisticas",
+          "titulo": "Estatística",
+          "url": "AlmoxerifadoCentral/Estatisticas/"
+        }
+      ]
+    },
+    {
+      "id": "Secretaria",
+      "titulo": "🏛️ Secretaria",
+      "url": "Secretaria/"
+    }
+  ]
+}
