@@ -4,8 +4,176 @@
 <meta charset="UTF-8">
 <title>Portal Executivo</title>
 <link rel="stylesheet" href="assets/portal.css">
-<script src="assets/portal.js"></script></head>
+<script src="assets/portal.js"></script>
+  <style id="login-portal-valente-style">
+    .login-overlay-valente{
+      position:fixed;
+      inset:0;
+      z-index:99999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:
+        radial-gradient(circle at top left, rgba(0,59,122,.16), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(211,162,70,.20), transparent 30%),
+        linear-gradient(135deg,#f6f9ff 0%,#eef4fb 58%,#fff8ec 100%);
+      font-family: Inter, Segoe UI, Arial, sans-serif;
+    }
+    .login-card-valente{
+      width:min(420px,100%);
+      background:#fff;
+      border:1px solid #dce5f1;
+      border-radius:24px;
+      box-shadow:0 18px 42px rgba(0,43,92,.18);
+      overflow:hidden;
+      position:relative;
+    }
+    .login-card-valente:before{
+      content:"";
+      display:block;
+      height:7px;
+      background:linear-gradient(90deg,#d71d24 0 28%,#003b7a 28% 72%,#d3a246 72% 100%);
+    }
+    .login-card-inner-valente{padding:30px 28px 26px}
+    .login-logo-valente{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:13px;
+      margin-bottom:20px;
+      text-align:left;
+    }
+    .login-logo-mark-valente{
+      width:58px;
+      height:58px;
+      border-radius:17px;
+      background:linear-gradient(135deg,#0a2348 0%,#003b7a 65%,#d3a246 100%);
+      color:#fff;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      font-size:20px;
+      box-shadow:0 10px 22px rgba(0,59,122,.24);
+      flex:none;
+    }
+    .login-logo-text-valente strong{
+      display:block;
+      color:#0a2348;
+      font-size:17px;
+      line-height:1.12;
+      font-weight:900;
+    }
+    .login-logo-text-valente span{
+      display:block;
+      margin-top:4px;
+      color:#5f6f86;
+      font-size:13px;
+      font-weight:700;
+    }
+    .login-title-valente{
+      margin:0 0 6px;
+      font-size:24px;
+      color:#0a2348;
+      font-weight:900;
+      text-align:center;
+    }
+    .login-subtitle-valente{
+      margin:0 0 22px;
+      color:#66758a;
+      font-size:14px;
+      text-align:center;
+      line-height:1.45;
+    }
+    .login-field-valente{margin-bottom:14px}
+    .login-field-valente label{
+      display:block;
+      margin-bottom:7px;
+      color:#5f6f86;
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+    .login-field-valente input{
+      width:100%;
+      height:46px;
+      border:1px solid #dce5f1;
+      border-radius:14px;
+      padding:0 14px;
+      outline:none;
+      font-size:15px;
+      background:#fff;
+      color:#172033;
+      box-sizing:border-box;
+    }
+    .login-field-valente input:focus{
+      border-color:#005cb9;
+      box-shadow:0 0 0 4px rgba(0,92,185,.12);
+    }
+    .login-btn-valente{
+      width:100%;
+      height:47px;
+      border:none;
+      border-radius:14px;
+      cursor:pointer;
+      color:#fff;
+      font-size:15px;
+      font-weight:900;
+      background:linear-gradient(135deg,#0a2348 0%,#005cb9 72%,#d3a246 100%);
+      box-shadow:0 13px 24px rgba(0,59,122,.23);
+      margin-top:8px;
+    }
+    .login-error-valente{
+      display:none;
+      margin-top:12px;
+      padding:10px 12px;
+      border-radius:12px;
+      background:#fff0f0;
+      color:#b42318;
+      border:1px solid #ffd0d0;
+      font-size:13px;
+      font-weight:700;
+      text-align:center;
+    }
+    body.portal-login-bloqueado{
+      overflow:hidden;
+    }
+  </style>
+
+</head>
 <body>
+
+  <div id="loginPortalValente" class="login-overlay-valente">
+    <div class="login-card-valente">
+      <div class="login-card-inner-valente">
+        <div class="login-logo-valente">
+          <div class="login-logo-mark-valente">SV</div>
+          <div class="login-logo-text-valente">
+            <strong>Secretaria da Saúde</strong>
+            <span>Prefeitura de Valente</span>
+          </div>
+        </div>
+
+        <h1 class="login-title-valente">Portal Executivo</h1>
+        <p class="login-subtitle-valente">Acesso restrito aos painéis da Secretaria Municipal de Saúde de Valente.</p>
+
+        <form id="formLoginPortalValente">
+          <div class="login-field-valente">
+            <label for="cpfLoginPortal">CPF</label>
+            <input id="cpfLoginPortal" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" autocomplete="username">
+          </div>
+          <div class="login-field-valente">
+            <label for="senhaLoginPortal">Senha</label>
+            <input id="senhaLoginPortal" type="password" placeholder="Digite sua senha" autocomplete="current-password">
+          </div>
+          <button class="login-btn-valente" type="submit">Entrar</button>
+          <div id="erroLoginPortalValente" class="login-error-valente">CPF ou senha inválidos.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+
 <div class="layout">
   <aside class="sidebar"></aside>
   <main class="main">
@@ -41,5 +209,90 @@
   </main>
 </div>
 <script>montarMenu('VisaoGeral')</script>
+
+  <script id="login-portal-valente-script">
+    (function(){
+      const overlay = document.getElementById('loginPortalValente');
+      const form = document.getElementById('formLoginPortalValente');
+      const cpfInput = document.getElementById('cpfLoginPortal');
+      const senhaInput = document.getElementById('senhaLoginPortal');
+      const erro = document.getElementById('erroLoginPortalValente');
+
+      const usuarios = {
+        '00000000000': { nome: 'Marília Oliveira', perfil: 'secretaria' },
+        '11111111111': { nome: 'Coordenadora do Almoxarifado', perfil: 'coordenadora' }
+      };
+
+      function formatarCPF(valor){
+        let v = String(valor || '').replace(/\D/g, '').slice(0, 11);
+        if(v.length > 9) return v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4');
+        if(v.length > 6) return v.replace(/(\d{3})(\d{3})(\d{0,3})/, '$1.$2.$3');
+        if(v.length > 3) return v.replace(/(\d{3})(\d{0,3})/, '$1.$2');
+        return v;
+      }
+
+      function liberarPortal(usuario){
+        try{
+          sessionStorage.setItem('portal_valente_logado', '1');
+          sessionStorage.setItem('portal_valente_usuario', JSON.stringify(usuario));
+        }catch(e){}
+
+        document.body.classList.remove('portal-login-bloqueado');
+        if(overlay) overlay.style.display = 'none';
+
+        const nomeAlvos = document.querySelectorAll('[data-user-name], .user-name, .usuario-nome');
+        nomeAlvos.forEach(el => el.textContent = usuario.nome);
+
+        document.body.setAttribute('data-perfil', usuario.perfil);
+        window.dispatchEvent(new CustomEvent('portalLoginValente', { detail: usuario }));
+      }
+
+      function tentarLogin(){
+        const cpf = cpfInput.value.replace(/\D/g, '');
+        const senha = senhaInput.value.trim();
+
+        if((senha === '123456' || senha === '00123556') && usuarios[cpf]){
+          liberarPortal(usuarios[cpf]);
+          return true;
+        }
+
+        erro.style.display = 'block';
+        senhaInput.focus();
+        return false;
+      }
+
+      if(cpfInput){
+        cpfInput.addEventListener('input', function(){
+          this.value = formatarCPF(this.value);
+          erro.style.display = 'none';
+        });
+      }
+
+      if(senhaInput){
+        senhaInput.addEventListener('input', function(){
+          erro.style.display = 'none';
+        });
+      }
+
+      if(form){
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+          tentarLogin();
+        });
+      }
+
+      document.body.classList.add('portal-login-bloqueado');
+
+      try{
+        const logado = sessionStorage.getItem('portal_valente_logado') === '1';
+        const usuario = JSON.parse(sessionStorage.getItem('portal_valente_usuario') || 'null');
+        if(logado && usuario){
+          liberarPortal(usuario);
+        }
+      }catch(e){}
+
+    })();
+  </script>
+
 </body>
 </html>
