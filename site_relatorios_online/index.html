@@ -6,26 +6,7 @@
 <link rel="stylesheet" href="/site_relatorios_online/assets/portal.css">
 <script src="/site_relatorios_online/assets/portal.js"></script></head>
 <body>
-<div id="loginScreen" class="login-screen">
-  <div class="login-card">
-    <div class="login-logo-box">
-      <div class="login-logo-mark">SV</div>
-      <div class="login-logo-text">
-        <strong>Secretaria<br>da Saúde</strong>
-        <span>Prefeitura de Valente</span>
-      </div>
-    </div>
-    <div class="login-title">Portal Executivo</div>
-    <p class="login-sub">Acesso restrito aos painéis da Secretaria Municipal de Saúde de Valente.</p>
-    <div class="login-form">
-      <div class="field"><label>CPF</label><input id="loginCpf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" autocomplete="username"></div>
-      <div class="field"><label>Senha</label><input id="loginSenha" type="password" placeholder="Digite sua senha" autocomplete="current-password"></div>
-      <button class="btn" type="button" onclick="portalLogin()">Entrar</button>
-      <div id="loginMsg" class="login-msg"></div>
-    </div>
-  </div>
-</div>
-<div id="appLayout" class="layout app-locked">
+<div class="layout">
   <aside class="sidebar"></aside>
   <main class="main">
     <section class="hero">
@@ -59,6 +40,6 @@
     </div>
   </main>
 </div>
-<script>inicializarLoginPortal('VisaoGeral')</script>
+<script>montarMenu('VisaoGeral')</script>
 </body>
 </html>
