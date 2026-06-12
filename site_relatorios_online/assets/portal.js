@@ -1,26 +1,37 @@
 let __portalConfigCache = null;
 window.__portalModuloBase = window.__portalModuloBase || baseAtualPelaUrl();
 
+function portalRootPelaUrl(){
+  const p = window.location.pathname;
+  const marcador = '/site_relatorios_online/';
+  const i = p.indexOf(marcador);
+  if(i >= 0) return p.substring(0, i + marcador.length);
+  return './';
+}
+
 function baseAtualPelaUrl(){
   const p = window.location.pathname;
-  if(p.includes('/site_relatorios_online/')){
-    if(p.endsWith('/')) return p;
-    return p.replace(/\/index\.html$/,'/').replace(/\/[^\/]*$/,'/');
-  }
-  return '/site_relatorios_online/';
+  if(p.endsWith('/')) return p;
+  return p.replace(/\/index\.html$/,'/').replace(/\/[^\/]*$/,'/');
 }
 
 function normalizarUrlModulo(url){
-  if(!url) return '/site_relatorios_online/';
+  const root = portalRootPelaUrl();
+  if(!url) return root;
   if(url.startsWith('http')) return url;
-  if(url.startsWith('/site_relatorios_online/')) return url.endsWith('/') ? url : url + '/';
-  return '/site_relatorios_online/' + url.replace(/^\/+/, '');
+  if(url.startsWith('/')){
+    // Compatibilidade com links antigos: remove /site_relatorios_online/ e usa a raiz real do portal.
+    url = url.replace(/^\/site_relatorios_online\/?/, '');
+  }
+  const destino = new URL(url.replace(/^\/+/, ''), window.location.origin + root).pathname;
+  return destino.endsWith('/') ? destino : destino + '/';
 }
 
 async function carregarConfig(){
   if(__portalConfigCache) return __portalConfigCache;
   try{
-    const r=await fetch('/site_relatorios_online/portal_config.json?ts='+Date.now());
+    const root = portalRootPelaUrl();
+    const r=await fetch(root + 'portal_config.json?ts='+Date.now());
     if(r.ok){
       __portalConfigCache = await r.json();
       return __portalConfigCache;
@@ -32,7 +43,8 @@ async function carregarConfig(){
 function linkMenu(item, ativo){
   const id = item.id || '';
   const url = item.url || '';
-  return `<a class="menu-link ${ativo===id?'active':''}" data-module-id="${id}" data-url="${url}" href="/site_relatorios_online/${url}"><span>${item.titulo}</span><span>›</span></a>`;
+  const destino = normalizarUrlModulo(url);
+  return `<a class="menu-link ${ativo===id?'active':''}" data-module-id="${id}" data-url="${url}" href="${destino}"><span>${item.titulo}</span><span>›</span></a>`;
 }
 
 function menuHTML(c,a){
@@ -90,7 +102,7 @@ function executarScriptsDoConteudo(container){
   const scripts = Array.from(container.querySelectorAll('script'));
   for(const antigo of scripts){
     const src = antigo.getAttribute('src') || '';
-    if(src.includes('/assets/portal.js')){ antigo.remove(); continue; }
+    if(src.includes('/assets/portal.js') || src.includes('assets/portal.js')){ antigo.remove(); continue; }
     const novo = document.createElement('script');
     for(const attr of antigo.attributes) novo.setAttribute(attr.name, attr.value);
     if(antigo.textContent) novo.textContent = antigo.textContent;
